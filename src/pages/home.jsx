@@ -125,7 +125,7 @@ const Home = () => {
                   }}
                   onInit={(typewriter) => {
                     typewriter
-                      .typeString(`Hello<span class='wave-hand'>👋</span><span class='wave-hand'>👋</span> I'm Dandy,<br/>A Full-Stack Web Developer,`)
+                      .typeString(`Hello<span class="wave-hand">👋</span><span class="wave-hand">👋</span> I'm Dandy,<br/>A Full-Stack Web Developer,`)
                       .pauseFor(1000)
                       .typeString(`<br/><br/>`)
                       .typeString(`<span class='text-[25px] font-serif'>Skilled in,</span><br/><span>Frontend Web Development,</span>`)
