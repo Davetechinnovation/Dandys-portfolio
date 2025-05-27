@@ -20,7 +20,7 @@ const Home = () => {
     <div className='bg-[#111111] min-h-screen px-3 py-4  sm:p-8'>
         <div className='grid grid-cols-1 lg:grid-cols-[330px_1fr] gap-4 overflow-x-auto '>
           <div
-  className="gradient-scroll bg-[#222222] h-[100dvh] lg:my-5 rounded-xl overflow-y-auto"
+  className="gradient-scroll bg-[#222222]  lg:my-5 rounded-xl overflow-y-auto"
   onWheel={(e) => {
     const el = e.currentTarget;
     const atTop = el.scrollTop === 0;
@@ -295,7 +295,7 @@ const Home = () => {
       onInit={(typewriter) => {
         typewriter
           // Step 0: Type intro, pause, never delete intro until the end
-          .typeString(`Hello<span class='wave-hand'>👋</span><span class='wave-hand'>👋</span> I'm Dandy,<br/>A Full-Stack Web Developer,`)
+          .typeString(`Hello <span class="wave-hand">👋</span><span class="wave-hand">👋</span> I'm Dandy,<br/>A Full-Stack Web Developer,`)
           .pauseFor(1000)
 
           // Add a small line break or margin for the next lines

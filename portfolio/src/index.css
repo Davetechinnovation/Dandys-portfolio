@@ -33,9 +33,9 @@
 .wave-hand {
   display: inline-block;
   animation: wave 2s infinite;
-  transform-origin: 70% 70%; /* makes it pivot from the base of the hand */
+  transform-origin: 70% 70%;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
 }
-
 
 .typing {
     width: 473px;
