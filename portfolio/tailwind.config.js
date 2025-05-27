@@ -11,6 +11,19 @@ export default {
         'lg-customm': { min: '560px', max: '886px' },
        
       },
+
+      fontFamily: {
+        sans: [
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Segoe UI"',
+          '"Apple Color Emoji"',
+          '"Segoe UI Emoji"',
+          '"Noto Color Emoji"',
+          'sans-serif',
+        ],
+      },
     },
   },
   plugins: [],

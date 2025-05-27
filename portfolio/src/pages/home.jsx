@@ -20,7 +20,7 @@ const Home = () => {
     <div className='bg-[#111111] min-h-screen px-3 py-4  sm:p-8'>
         <div className='grid grid-cols-1 lg:grid-cols-[330px_1fr] gap-4 overflow-x-auto '>
           <div
-  className="gradient-scroll bg-[#222222] min-h-screen lg:my-5 rounded-xl overflow-y-auto"
+  className="gradient-scroll bg-[#222222] h-auto lg:my-5 rounded-xl overflow-y-auto"
   onWheel={(e) => {
     const el = e.currentTarget;
     const atTop = el.scrollTop === 0;
@@ -239,7 +239,7 @@ const Home = () => {
 
                 
             </div>
-           <div className='bg-[#222222] min-h-screen  rounded-xl '>
+           <div className='bg-[#222222] h-auto  rounded-xl '>
             <div>
                  {/* Hamburger Button */}
                  <div className='flex flex-col justify-end items-end px-8 translate-y-5 text-white '>
