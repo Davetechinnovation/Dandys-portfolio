@@ -19,7 +19,20 @@ const Home = () => {
   return (
     <div className='bg-[#111111] min-h-screen px-3 py-4  sm:p-8'>
         <div className='grid grid-cols-1 lg:grid-cols-[330px_1fr] gap-4 overflow-x-auto '>
-           <div class="gradient-scroll bg-[#222222] h-[100dvh] overflow-y-auto lg:my-5 rounded-xl  ">
+          <div
+  className="gradient-scroll bg-[#222222] h-[100dvh] lg:my-5 rounded-xl overflow-y-auto"
+  onWheel={(e) => {
+    const el = e.currentTarget;
+    const atTop = el.scrollTop === 0;
+    const atBottom = el.scrollHeight - el.scrollTop === el.clientHeight;
+
+    // If at the top or bottom, allow parent scroll
+    if ((atTop && e.deltaY < 0) || (atBottom && e.deltaY > 0)) {
+      e.preventDefault(); // prevent scroll trap
+      window.scrollBy({ top: e.deltaY, behavior: 'smooth' });
+    }
+  }}
+>
                 <div className='flex flex-col justify-center items-center pt-10 pb-6'>
                     <div className='bg-gradient-to-br from-[#1f1f1f] via-[#444444] to-[#202a44] max-w-[160px] w-[160px] justify-center items-center flex rounded-md py-3 '>
                        <div className="w-[130px] h-[130px] rounded-full overflow-hidden">
