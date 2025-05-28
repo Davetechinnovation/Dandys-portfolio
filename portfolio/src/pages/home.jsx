@@ -282,7 +282,7 @@ const Home = () => {
 
             </div>
            <div className="sm:px-9 px-5 text-white py-6">
-      <p className="text-[30px] italic pb-2 ">Welcome to My Abode</p>
+      <p className="text-[30px] italic pb-2 ">Welcome to My Abode 👋</p>
 
       <div className="text-white">
   <div className="text-[20px] font-serif py-2">
