@@ -277,9 +277,13 @@ const Home = () => {
                 </nav>
 
                
-                 <div
-                    className={`fixed top-0 left-0 w-full h-[100dvh] overflow-y-auto mt-[40px] rounded-t-full bg-gradient-to-br from-black via-[#1b1b1b] to-[#101420]  z-40 transition-transform duration-500 ease-in-out ${
-                      isOpen ? '-translate-y-0' : 'translate-y-full pointer-events-none'
+                {/* Overlay to block background interaction when menu is open */}
+                {isOpen && (
+                  <div className="fixed inset-0 w-full h-full bg-black bg-opacity-50 z-30 transition-opacity duration-300" style={{ pointerEvents: 'auto' }} />
+                )}
+                <div
+                    className={`fixed top-0 left-0 w-full h-[100dvh] overflow-y-auto mb-[30px] rounded-b-full bg-gradient-to-br from-black via-[#1b1b1b] to-[#101420]  z-40 transition-transform duration-500 ease-in-out ${
+                      isOpen ? 'translate-y-0' : '-translate-y-full pointer-events-none'
                     }`}
                     onTouchStart={handleTouchStart}
                     onTouchEnd={handleTouchEnd}
