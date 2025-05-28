@@ -114,7 +114,7 @@ const Home = () => {
           </nav>
           {/* Main Section */}
           <div className="px-9 text-white py-6">
-            <p className="text-[30px] italic pb-2">Welcome to My Abode</p>
+            <p className="text-[30px] italic pb-2">Welcome to My Abode 👋</p>
             <div className="text-white">
               <div className="text-[20px] font-serif py-2">
                 <Typewriter
@@ -125,7 +125,7 @@ const Home = () => {
                   }}
                   onInit={(typewriter) => {
                     typewriter
-                      .typeString(`Hello<span class="wave-han">👋</span><span class="wave-han">👋</span> I'm Dandy,<br/>A Full-Stack Web Developer,`)
+                      .typeString(`Hello<span class="">👋</span><span class="">👋</span> I'm Dandy,<br/>A Full-Stack Web Developer,`)
                       .pauseFor(1000)
                       .typeString(`<br/><br/>`)
                       .typeString(`<span class='text-[25px] font-serif'>Skilled in,</span><br/><span>Frontend Web Development,</span>`)
@@ -143,7 +143,7 @@ const Home = () => {
                       .typeString("JavaScript.")
                       .pauseFor(2000)
                       .deleteChars("JavaScript.".length + "Master in,".length + 1)
-                      .typeString("And Lastly,<br/>Well Knowledged in React Framework.")
+                      .typeString("And Lastly,<br/>Well Knowledged in React Framework.")op
                       .pauseFor(2500)
                       .deleteAll()
                       .pauseFor(500)
