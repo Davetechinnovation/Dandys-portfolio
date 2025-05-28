@@ -7,7 +7,7 @@ import { Menu, X } from 'lucide-react';
 const Home = () => {
     const [isOpen, setIsOpen] = useState(false);
     const startY = useRef(null);
-    // Gesture handlers for swipe down to close
+    // Gesture handlers for swipe up to close
     const handleTouchStart = (e) => {
       startY.current = e.touches[0].clientY;
     };
@@ -15,7 +15,7 @@ const Home = () => {
     const handleTouchEnd = (e) => {
       if (startY.current === null) return;
       const endY = e.changedTouches[0].clientY;
-      if (endY - startY.current > 80) { // 80px threshold
+      if (startY.current - endY > 80) { // 80px threshold for swipe up
         setIsOpen(false);
       }
       startY.current = null;
@@ -282,7 +282,7 @@ const Home = () => {
                   <div className="fixed inset-0 w-full h-full bg-black bg-opacity-50 z-30 transition-opacity duration-300" style={{ pointerEvents: 'auto' }} />
                 )}
                 <div
-                    className={`fixed top-0 left-0 w-full h-[100dvh] overflow-y-auto mb-[30px] rounded-b-full bg-gradient-to-br from-black via-[#1b1b1b] to-[#101420]  z-40 transition-transform duration-500 ease-in-out ${
+                    className={`fixed top-0 left-0 w-full h-[100dvh]  rounded-b-full bg-gradient-to-br from-black via-[#1b1b1b] to-[#101420]  z-40 transition-transform duration-500 ease-in-out ${
                       isOpen ? 'translate-y-0' : '-translate-y-full pointer-events-none'
                     }`}
                     onTouchStart={handleTouchStart}
