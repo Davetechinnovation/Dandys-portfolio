@@ -305,7 +305,7 @@ const Home = () => {
       <p className="text-[30px] italic pb-2 ">Welcome to My Abode</p>
 
       <div className="text-white">
-      <div className="text-[20px] font-serif py-2" style={{ fontFamily: 'Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji,sans-serif' }}>
+  <div className="text-[20px] py-2">
     <Typewriter
       options={{
         loop: true,
