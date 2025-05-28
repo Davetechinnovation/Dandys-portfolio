@@ -6,6 +6,18 @@ import { Menu, X } from "lucide-react";
 const Home = () => {
   const [toggle, setToggle] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+  // Listen for screen resize to auto-close hamburger if switching to desktop nav
+  useEffect(() => {
+    function handleResize() {
+      // Tailwind's 'sm' is 640px, so use 640 as the breakpoint
+      if (window.innerWidth >= 640 && isOpen) {
+        setIsOpen(false);
+      }
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isOpen]);
   const startY = useRef(null);
   // Gesture handlers for swipe up to close
   const handleTouchStart = (e) => {
@@ -35,20 +47,7 @@ const Home = () => {
   return (
     <div className="bg-[#111111] min-h-screen px-3 py-4  sm:p-5">
       <div className="grid grid-cols-1 lg:grid-cols-[330px_1fr] gap-4 overflow-x-auto ">
-        <div
-          className="gradient-scroll bg-[#222222] h-auto lg:my-5 rounded-xl overflow-y-auto"
-          onWheel={(e) => {
-            const el = e.currentTarget;
-            const atTop = el.scrollTop === 0;
-            const atBottom = el.scrollHeight - el.scrollTop === el.clientHeight;
-
-            // If at the top or bottom, allow parent scroll
-            if ((atTop && e.deltaY < 0) || (atBottom && e.deltaY > 0)) {
-              e.preventDefault(); // prevent scroll trap
-              window.scrollBy({ top: e.deltaY, behavior: "smooth" });
-            }
-          }}
-        >
+        <div className="gradient-scroll bg-[#222222] h-auto lg:my-5 rounded-xl overflow-hidden select-none">
           <div
             className=" my-2 mx-3 w-[70px] h-8 flex items-center bg-[#111111] rounded-full px-2 cursor-pointer transition-colors duration-300"
             onClick={() => setToggle((prev) => !prev)}
@@ -165,7 +164,7 @@ const Home = () => {
                   <div className="text-transparent bg-clip-text bg-gradient-to-br from-[#1f1f1f] via-[#444444] to-[#202a44]">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
+                      viewBox="0 0 24 24"srk
                       className="w-8 h-8"
                     >
                       <defs>
@@ -328,7 +327,7 @@ const Home = () => {
               />
             )}
             <div
-              className={`fixed top-0 left-0 w-full h-[100dvh]  rounded-b-full bg-gradient-to-br from-black via-[#1b1b1b] to-[#101420]  z-40 transition-transform duration-500 ease-in-out ${
+              className={`fixed -top-14 left-0 w-full h-[100dvh]   rounded-b-full bg-gradient-to-br from-black via-[#1b1b1b] to-[#101420]  z-40 transition-transform duration-500 ease-in-out ${
                 isOpen
                   ? "translate-y-0"
                   : "-translate-y-full pointer-events-none"
@@ -441,7 +440,7 @@ const Home = () => {
             </div>
           </div>
           <div>
-            <div className="text-white sm:px-8 px-3 pt-5  ">
+            <div className="text-white sm:px-8 px-3 py-5  ">
               <div class=" rounded-lg bg-gradient-to-br from-[#1f1f1f] via-[#3b3b3b] to-[#0f172a]">
                 <div class=" rounded-lg py-4 ">
                   <p className="pb-2 text-[30px] ">💡 About Me</p>
@@ -451,16 +450,15 @@ const Home = () => {
                     building clean, responsive, and interactive web experiences
                     using tools like React, Tailwind CSS, and Node.js. From
                     crafting beautiful frontend interfaces to setting up solid
-                    backend foundations.  <br />  <br />
-                     I love bringing ideas to life through
-                    code. I began my coding journey at 16, and ever since, I’ve
-                    been constantly pushing boundaries — learning,
+                    backend foundations. <br /> <br />I love bringing ideas to
+                    life through code. I began my coding journey at 16, and ever
+                    since, I’ve been constantly pushing boundaries — learning,
                     experimenting, and improving every day. I pay attention to
                     detail, care about user experience, and enjoy creating
                     solutions that are fast, functional, and visually
-                    compelling. Whether it’s building a portfolio site, a web
-                    app, or diving into new tech stacks, I’m always excited to
-                    take on new challenges and grow as a developer. Let’s create
+                    compelling. Whether it’s building a Landing page, a web app,
+                    or diving into new tech stacks, I’m always excited to take
+                    on new challenges and grow as a developer. Let’s create
                     something amazing together 🚀
                   </p>
                 </div>
