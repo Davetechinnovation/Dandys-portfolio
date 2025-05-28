@@ -1,10 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import img from "../assets/Dandy's-image.jpg"
 import Typewriter from 'typewriter-effect';
 import { Menu, X } from 'lucide-react';
 
+
 const Home = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const startY = useRef(null);
+    // Gesture handlers for swipe down to close
+    const handleTouchStart = (e) => {
+      startY.current = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e) => {
+      if (startY.current === null) return;
+      const endY = e.changedTouches[0].clientY;
+      if (endY - startY.current > 80) { // 80px threshold
+        setIsOpen(false);
+      }
+      startY.current = null;
+    };
 
     useEffect(() => {
     if (isOpen) {
@@ -239,7 +254,7 @@ const Home = () => {
 
                 
             </div>
-           <div className='bg-[#222222] h-auto  rounded-xl '>
+           <div className='bg-[#222222] min-h-screen  rounded-xl '>
             <div>
                  {/* Hamburger Button */}
                  <div className='flex flex-col justify-end items-end px-8 translate-y-5 text-white '>
@@ -263,13 +278,14 @@ const Home = () => {
 
                
                  <div
-                    className={`fixed top-0 left-0 w-full h-[100dvh] rounded-t-lg bg-gradient-to-br from-black via-[#1b1b1b] to-[#101420]  z-40 transition-transform duration-500 ease-in-out ${
+                    className={`fixed top-0 left-0 w-full h-[100dvh] overflow-y-auto mt-[40px] rounded-t-full bg-gradient-to-br from-black via-[#1b1b1b] to-[#101420]  z-40 transition-transform duration-500 ease-in-out ${
                       isOpen ? '-translate-y-0' : 'translate-y-full pointer-events-none'
                     }`}
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
                   >
-                    <p onClick={() => setIsOpen(!isOpen)} className=' text-white flex flex-col items-end translate-y-9 px-10 '><X size={28} /></p>
+                    <p onClick={() => setIsOpen(!isOpen)} className=' text-white flex flex-col items-end translate-y-20 px-14 '><X size={28} /></p>
                     <div className='flex flex-col h-full items-center justify-center'>
-                    
                     <ul className="text-white text-xl space-y-8">
                       <li className="cursor-pointer hover:underline">Home</li>
                       <li className="cursor-pointer hover:underline">Resume</li>
@@ -295,7 +311,7 @@ const Home = () => {
       onInit={(typewriter) => {
         typewriter
           // Step 0: Type intro, pause, never delete intro until the end
-                    .typeString(`Hello <span class="wave-hand">&#x1F44B;</span><span class="wave-hand">&#x1F44B;</span> I'm Dandy,<br/>A Full-Stack Web Developer,`)
+                   .typeString(`Hello <span class="wave-hand">👋</span><span class="wave-hand">👋</span> I'm Dandy,<br/>A Full-Stack Web Developer,`)
           .pauseFor(1000)
 
           // Add a small line break or margin for the next lines
