@@ -295,7 +295,7 @@ const Home = () => {
       onInit={(typewriter) => {
         typewriter
           // Step 0: Type intro, pause, never delete intro until the end
-          .typeString(`Hello <span class="wave-hand">👋</span><span class="wave-hand">👋</span> I'm Dandy,<br/>A Full-Stack Web Developer,`)
+          .typeString(`Hello <span class="wave-hand" style="font-family: 'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji',sans-serif;">👋</span><span class="wave-hand" style="font-family: 'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji',sans-serif;">👋</span> I'm Dandy,<br/>A Full-Stack Web Developer,`)
           .pauseFor(1000)
 
           // Add a small line break or margin for the next lines
