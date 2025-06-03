@@ -7,8 +7,10 @@ export default {
   theme: {
     extend: {
        screens: {
-        'lg-custom': { min: '560px', max: '1024px' },
+        'lg-custom': { min: '560px', max: '1023px' },
         'lg-customm': { min: '560px', max: '886px' },
+        'lg-custommm': { min:'1024px'},
+        'sm-custom': { min:'700px' },
        
       },
 

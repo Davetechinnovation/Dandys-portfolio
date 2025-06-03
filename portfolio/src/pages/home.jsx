@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import img from "../assets/Dandy's-image.jpg";
 import Typewriter from "typewriter-effect";
 import { Menu, X } from "lucide-react";
+import { FaLaptopCode } from "react-icons/fa";
+import { TbApi } from "react-icons/tb";
 
 const Home = () => {
   const [toggle, setToggle] = useState(false);
@@ -46,8 +48,9 @@ const Home = () => {
 
   return (
     <div className="bg-[#111111] min-h-screen px-3 py-4  sm:p-5">
-      <div className="grid grid-cols-1 lg:grid-cols-[330px_1fr] gap-4 overflow-x-auto ">
-        <div className="gradient-scroll bg-[#222222] h-auto lg:my-5 rounded-xl overflow-hidden select-none">
+      <div className="grid grid-cols-1 lg:grid-cols-[330px_1fr] min-h-[130vh]">
+        {/* Sidebar - fixed on large screens */}
+        <div className="gradient-scroll bg-[#222222] h-[130vh] rounded-xl overflow-hidden select-none hidden lg:block fixed left-0 top-0 w-[330px] z-20">
           <div
             className=" my-2 mx-3 w-[70px] h-8 flex items-center bg-[#111111] rounded-full px-2 cursor-pointer transition-colors duration-300"
             onClick={() => setToggle((prev) => !prev)}
@@ -58,7 +61,7 @@ const Home = () => {
               }`}
             />
           </div>
-          <div className="flex flex-col justify-center items-center pt-10 pb-6">
+          <div className="flex flex-col justify-center items-center pt-6  pb-6">
             <div className="bg-gradient-to-br from-[#1f1f1f] via-[#444444] to-[#202a44] max-w-[160px] w-[160px] justify-center items-center flex rounded-md py-3 ">
               <div className="w-[130px] h-[130px] rounded-full overflow-hidden">
                 <img src={img} alt="" className="w-full h-full object-cover" />
@@ -164,7 +167,8 @@ const Home = () => {
                   <div className="text-transparent bg-clip-text bg-gradient-to-br from-[#1f1f1f] via-[#444444] to-[#202a44]">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"srk
+                      viewBox="0 0 24 24"
+                      srk
                       className="w-8 h-8"
                     >
                       <defs>
@@ -289,7 +293,8 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="bg-[#222222] min-h-screen rounded-xl">
+        {/* Main Content - scrollable, with margin to accommodate sidebar */}
+        <div className="bg-[#222222] h-[130vh] rounded-xl ml-0 lg:ml-[330px] overflow-y-auto">
           <div className="">
             {/* Hamburger Button */}
             <div className="flex flex-col justify-end items-end px-8 translate-y-5 text-white ">
@@ -351,121 +356,171 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="sm:px-9 px-5 text-white pt-6 overflow-y-auto custom-scrollbar">
-            <p className="sm:text-[30px] text-[28px] italic pb-3 ">
-              Welcome to My Abode
-            </p>
-            <p className="text-[20px] font-serif pb-2 ">
-              Hello <span class="wave-hand">👋</span>
-              <span class="wave-hand">👋</span> I'm Dandy,
-            </p>
-
-            <div className="text-white">
-              <div className="sm:text-[20px] text-[18px] font-serif py- min-h-[125px] ">
-                <Typewriter
-                  options={{
-                    loop: true,
-                    delay: 50,
-                    deleteSpeed: 40,
-                  }}
-                  onInit={(typewriter) => {
-                    typewriter
-                      // Step 0: Type intro, pause, never delete intro until the end
-                      .typeString(`A Full-Stack Web Developer,`)
-                      .pauseFor(1000)
-
-                      // Add a small line break or margin for the next lines
-                      .typeString(`<br/><br/>`)
-
-                      // Step 1: Skilled in, Frontend Web Development,
-                      .typeString(
-                        `<span class='font-serif'>Skilled in,</span><br/><span>Frontend Web Development,</span>`
-                      )
-                      .pauseFor(2000)
-
-                      // Step 2: Delete Frontend Web Development only
-                      .deleteChars("Frontend Web Development,".length)
-                      .typeString("Backend Web Development,")
-                      .pauseFor(2000)
-
-                      // Step 3: Delete Skilled in, + Backend Web Development,
-                      .deleteChars(
-                        "Backend Web Development,".length +
-                          "Skilled in,".length +
-                          1
-                      )
-                      // +1 for line break count adjustment
-
-                      // Step 4: Master in, HTML,
-                      .typeString(
-                        `<span class=''>Master in,</span><br/><span>HTML,</span>`
-                      )
-                      .pauseFor(1500)
-
-                      // Step 5: Delete HTML only (keep "Master in,")
-                      .deleteChars("HTML,".length)
-
-                      // Step 6: Write CSS,
-                      .typeString("Tailwind CSS,")
-                      .pauseFor(1500)
-
-                      // Step 7: Delete Tailwind CSS only
-                      .deleteChars("Tailwind CSS,".length)
-
-                      // Step 8: Write JavaScript.
-                      .typeString("JavaScript.")
-                      .pauseFor(2000)
-
-                      // Step 9: Delete JavaScript. + delete "Master in," too before next phrase
-                      .deleteChars(
-                        "JavaScript.".length + "Master in,".length + 1
-                      )
-                      // +1 for line break after "Master in,"
-
-                      // Step 10: Type the final phrase
-                      .typeString(
-                        "And Lastly,<br/>Well Knowledged in React Framework."
-                      )
-                      .pauseFor(2500)
-
-                      // Step 11: Delete everything including intro and all typed content
-                      .deleteAll()
-                      .pauseFor(500)
-
-                      // Step 12: Restart cycle
-                      .start();
-                  }}
-                />
-              </div>
-            </div>
-          </div>
+          
           <div>
-            <div className="text-white sm:px-8 px-3 py-5  ">
-              <div class=" rounded-lg bg-gradient-to-br from-[#1f1f1f] via-[#3b3b3b] to-[#0f172a]">
-                <div class=" rounded-lg py-4 ">
-                  <p className="pb-2 text-[30px] ">💡 About Me</p>
-                  <p className="sm:px-9 px-2  tracking-wide ">
-                    I’m Dandy, a passionate Full-Stack Web Developer with a
-                    creative eye and a problem-solving mindset. I specialize in
-                    building clean, responsive, and interactive web experiences
-                    using tools like React, Tailwind CSS, and Node.js. From
-                    crafting beautiful frontend interfaces to setting up solid
-                    backend foundations. <br /> <br />I love bringing ideas to
-                    life through code. I began my coding journey at 16, and ever
-                    since, I’ve been constantly pushing boundaries — learning,
-                    experimenting, and improving every day. I pay attention to
-                    detail, care about user experience, and enjoy creating
-                    solutions that are fast, functional, and visually
-                    compelling. Whether it’s building a Landing page, a web app,
-                    or diving into new tech stacks, I’m always excited to take
-                    on new challenges and grow as a developer. Let’s create
-                    something amazing together 🚀
-                  </p>
+            <div className="sm:px-9 px-5  text-white pt-6 overflow-y-auto custom-scrollbar">
+              <p className="sm:text-[30px] text-[28px] italic pb-3 font-extrabold ">
+                Welcome to My Abode
+              </p>
+              <p className="text-[22px] font-serif pb-2 ">
+                Hello <span className="wave-hand">👋</span>
+                <span className="wave-hand">👋</span> I'm Dandy,
+              </p>
+              <p className="text-[20px] font-serif ">
+                A Full-Stack Web Developer,
+              </p>
+
+              <div className="text-white">
+                <div className="sm:text-[20px] text-[18px] font-serif pt-[35px] min-h-[95px] ">
+                  <Typewriter
+                    options={{
+                      loop: true,
+                      delay: 50,
+                      deleteSpeed: 40,
+                    }}
+                    onInit={(typewriter) => {
+                      typewriter
+
+                        // Step 1: Skilled in, Frontend Web Development,
+                        .typeString(
+                          `<span class='font-serif'>Skilled in,</span><br/><span>Frontend Web Development,</span>`
+                        )
+                        .pauseFor(2000)
+
+                        // Step 2: Delete Frontend Web Development only
+                        .deleteChars("Frontend Web Development,".length)
+                        .typeString("Backend Web Development,")
+                        .pauseFor(2000)
+
+                        // Step 3: Delete Skilled in, + Backend Web Development,
+                        .deleteChars(
+                          "Backend Web Development,".length +
+                            "Skilled in,".length +
+                            1
+                        )
+                        // +1 for line break count adjustment
+
+                        // Step 4: Master in, HTML,
+                        .typeString(
+                          `<span class=''>Master in,</span><br/><span>HTML,</span>`
+                        )
+                        .pauseFor(1500)
+
+                        // Step 5: Delete HTML only (keep "Master in,")
+                        .deleteChars("HTML,".length)
+
+                        // Step 6: Write CSS,
+                        .typeString("Tailwind CSS,")
+                        .pauseFor(1500)
+
+                        // Step 7: Delete Tailwind CSS only
+                        .deleteChars("Tailwind CSS,".length)
+
+                        // Step 8: Write JavaScript.
+                        .typeString("JavaScript.")
+                        .pauseFor(2000)
+
+                        // Step 9: Delete JavaScript. + delete "Master in," too before next phrase
+                        .deleteChars(
+                          "JavaScript.".length + "Master in,".length + 1
+                        )
+                        // +1 for line break after "Master in,"
+
+                        // Step 10: Type the final phrase
+                        .typeString(
+                          "And Lastly,<br/>Well Knowledged in React Framework."
+                        )
+                        .pauseFor(2500)
+
+                        // Step 11: Delete everything including intro and all typed content
+                        .deleteAll()
+                        .pauseFor(500)
+
+                        // Step 12: Restart cycle
+                        .start();
+                    }}
+                  />
                 </div>
               </div>
-
-              <div></div>
             </div>
+            
+              <div className="text-white sm:px-8 px-3 py-5  ">
+                <div class=" rounded-lg bg-gradient-to-br from-[#1f1f1f] via-[#3b3b3b] to-[#0f172a]">
+                  <div class=" rounded-lg py-4 ">
+                    <p className="pb-2 text-[30px] font-extrabold ">
+                      💡 About Me
+                    </p>
+                    <p className="sm:px-9 px-2  tracking-wide ">
+                      I’m Dandy, a passionate Full-Stack Web Developer with a
+                      creative eye and a problem-solving mindset. I specialize
+                      in building clean, responsive, and interactive web
+                      experiences using tools like React, Tailwind CSS, and
+                      Node.js. From crafting beautiful frontend interfaces to
+                      setting up solid backend foundations. <br /> <br />I love
+                      bringing ideas to life through code. I began my coding
+                      journey at 16, and ever since, I’ve been constantly
+                      pushing boundaries — learning, experimenting, and
+                      improving every day. I pay attention to detail, care about
+                      user experience, and enjoy creating solutions that are
+                      fast, functional, and visually compelling. Whether it’s
+                      building a Landing page, a web app, or diving into new
+                      tech stacks, I’m always excited to take on new challenges
+                      and grow as a developer. Let’s create something amazing
+                      together 🚀
+                    </p>
+                  </div>
+                </div>
+
+                <div className="py-3">
+                  <p className="py-4  text-[25px] font-extrabold ">What I Do</p>
+                  <div>
+                    <div className="grid sm-custom:grid-cols-2 grid-cols-1 gap-5  ">
+                      <div className=" flex  gap-3 border-l-2 border-l-[#3b3b3b] px-3 py-4 leading-relaxed border-r-2 rounded-l-lg rounded-r-lg border-r-[#0f172a] shadow-lg shadow-[#3b3b3b] ">
+                        <p className=" translate-y-1 ">
+                          <FaLaptopCode
+                            size={30}
+                            title="Full-Stack Development"
+                          />
+                        </p>
+                        <p>
+                          <span className="sm:text-[20px] text-[18px] py-3 font-medium">
+                            Full-Stack Development
+                          </span>
+                          <br />
+                          <span className="sm:text-[16px] text-[14px] tracking-widest ">
+                            I build complete web solutions from scratch —
+                            combining React for dynamic user interfaces with
+                            Node.js and Express on the backend to ensure speed,
+                            scalability, and stability.
+                          </span>
+                        </p>
+                      </div>
+
+                      <div className=" flex  gap-3 border-l-2 border-l-[#3b3b3b] px-3 py-4 leading-relaxed border-r-2 rounded-l-lg rounded-r-lg border-r-[#0f172a] shadow-lg shadow-[#3b3b3b] ">
+                        <p className=" translate-y-1 ">
+                          <TbApi
+                            size={30}
+                            title="Backend Logic & API Integration"
+                          />
+                        </p>
+                        <p>
+                          <span className="text-[20px] py-2 font-medium">
+                            Backend Logic & API Integration
+                          </span>
+                          <br />
+                         <span className="sm:text-[16px] text-[14px] tracking-widest ">
+                            I set up robust server-side logic, manage user
+                            authentication, and connect to databases using tools
+                            like Express.js and SQLite. I ensure seamless data
+                            flow and app reliability.
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+           
           </div>
         </div>
       </div>
