@@ -48,9 +48,8 @@ const Home = () => {
 
   return (
     <div className="bg-[#111111] min-h-screen px-3 py-4  sm:p-5">
-      <div className="grid grid-cols-1 lg:grid-cols-[330px_1fr] min-h-[130vh]">
-        {/* Sidebar - fixed on large screens */}
-        <div className="gradient-scroll bg-[#222222] h-[130vh] rounded-xl overflow-hidden select-none hidden lg:block fixed left-0 top-0 w-[330px] z-20">
+      <div className="grid grid-cols-1 lg:grid-cols-[330px_1fr] gap-4 overflow-x-auto ">
+        <div className="gradient-scroll bg-[#222222]  lg:my-5 rounded-xl overflow-hidden select-none">
           <div
             className=" my-2 mx-3 w-[70px] h-8 flex items-center bg-[#111111] rounded-full px-2 cursor-pointer transition-colors duration-300"
             onClick={() => setToggle((prev) => !prev)}
@@ -293,8 +292,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Main Content - scrollable, with margin to accommodate sidebar */}
-        <div className="bg-[#222222] h-[130vh] rounded-xl ml-0 lg:ml-[330px] overflow-y-auto">
+        <div className="bg-[#222222] rounded-xl">
           <div className="">
             {/* Hamburger Button */}
             <div className="flex flex-col justify-end items-end px-8 translate-y-5 text-white ">
