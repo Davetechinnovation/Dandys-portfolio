@@ -1,3 +1,31 @@
+@keyframes rotate-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) rotate(-360deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes rotate-out {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-360deg);
+  }
+}
+
+.animate-rotate-in {
+  animation: rotate-in 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.animate-rotate-out {
+  animation: rotate-out 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,36 +45,55 @@
   border: 2px solid transparent; /* add border to keep shape clean */
 }
 
-
-
 @keyframes wave {
-  0% { transform: rotate(0deg); }
-  10% { transform: rotate(14deg); }
-  20% { transform: rotate(-8deg); }
-  30% { transform: rotate(14deg); }
-  40% { transform: rotate(-4deg); }
-  50% { transform: rotate(10deg); }
-  60% { transform: rotate(0deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .wave-hand {
   display: inline-block;
   animation: wave 2s infinite;
   transform-origin: 70% 70%;
-  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji", sans-serif;
 }
 
 .typing {
-    width: 473px;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 2px solid #7E2EA0;
-    animation: typing 2s steps(12, end), cursor .2s steps(12, end) infinite;
+  width: 473px;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #7e2ea0;
+  animation: typing 2s steps(12, end), cursor 0.2s steps(12, end) infinite;
 }
 @keyframes typing {
-    from { width: 0 }
+  from {
+    width: 0;
+  }
 }
 @keyframes cursor {
-    50% { border-color: transparent }
+  50% {
+    border-color: transparent;
+  }
 }

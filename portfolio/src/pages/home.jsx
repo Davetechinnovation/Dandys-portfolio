@@ -1,11 +1,41 @@
 import { useState, useEffect, useRef } from "react";
 import img from "../assets/Dandy's-image.jpg";
+import img1 from "../assets/dandy-chioma.jpg";
+import img2 from "../assets/dandy-james.jpg";
+import img3 from "../assets/Tdandy-tol.jpg";
 import Typewriter from "typewriter-effect";
 import { Menu, X } from "lucide-react";
 import { FaLaptopCode } from "react-icons/fa";
 import { TbApi } from "react-icons/tb";
+import { FiMonitor } from "react-icons/fi";
+import { FiTool } from "react-icons/fi";
+import { MdPhoneIphone } from "react-icons/md";
+import { FaBug } from "react-icons/fa";
+import Testimonial1 from "../components/Testimonial1";
+import Testimonial2 from "../components/Testimonial2";
+import Testimonial3 from "../components/Testimonial3";
 
 const Home = () => {
+  // Navbar scroll effect: top-5 when scrolling up, top-0 when scrolling down
+  const [isScrollingUp, setIsScrollingUp] = useState(true);
+  const [hasScrolled, setHasScrolled] = useState(false);
+  const lastScrollY = useRef(window.scrollY);
+  const [showTestimonialModal, setShowTestimonialModal] = useState(null);
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setHasScrolled(currentScrollY > 0); // true if scrolled, false if at top
+
+      if (currentScrollY < lastScrollY.current) {
+        setIsScrollingUp(true); // Scrolling up
+      } else if (currentScrollY > lastScrollY.current) {
+        setIsScrollingUp(false); // Scrolling down
+      }
+      lastScrollY.current = currentScrollY;
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   const [toggle, setToggle] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -46,10 +76,30 @@ const Home = () => {
     return () => document.body.classList.remove("overflow-hidden");
   }, [isOpen]);
 
+  // Disable background scroll and pointer events when modal is open
+  useEffect(() => {
+    if (showTestimonialModal) {
+      document.body.classList.add("overflow-hidden");
+    } else if (!isOpen) {
+      document.body.classList.remove("overflow-hidden");
+    }
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [showTestimonialModal, isOpen]);
+
   return (
-    <div className="bg-[#111111] min-h-screen px-3 py-4  sm:p-5">
-      <div className="grid grid-cols-1 lg:grid-cols-[330px_1fr] gap-4 overflow-x-auto ">
-        <div className="gradient-scroll bg-[#222222]  lg:my-5 rounded-xl overflow-hidden select-none">
+    <div
+      className={`bg-[#111111] min-h-screen px-3 py-4 sm:p-5${
+        showTestimonialModal ? " pointer-events-none select-none" : ""
+      }`}
+    >
+      <div
+        className={`grid grid-cols-1 lg:grid-cols-[330px_1fr] gap-4 overflow-x-auto${
+          showTestimonialModal ? " pointer-events-none select-none" : ""
+        }`}
+      >
+        <div className="gradient-scroll bg-[#222222] lg-custommm:max-h-[125vh] lg-custommm:overflow-y-auto lg:my-5 rounded-xl overflow-hidde select-none">
           <div
             className=" my-2 mx-3 w-[70px] h-8 flex items-center bg-[#111111] rounded-full px-2 cursor-pointer transition-colors duration-300"
             onClick={() => setToggle((prev) => !prev)}
@@ -292,7 +342,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="bg-[#222222] rounded-xl">
+        <div className="bg-[#222222] lg-custommm:max-h-[125vh] sm-customm:max-h-[130vh] lg-custommm:overflow-y-auto rounded-xl scrollbar-hide">
           <div className="">
             {/* Hamburger Button */}
             <div className="flex flex-col justify-end items-end px-8 translate-y-5 text-white ">
@@ -305,7 +355,15 @@ const Home = () => {
               </button>
             </div>
 
-            <nav className=" sm:flex hidden max-w-[450px] w-[450px] bg-gradient-to-br from-[#000000] via-[#1b1b1b] to-[#101420]  flex-col items-end  px-8 rounded-bl-3xl ml-auto">
+            <nav
+              className={`sm:flex fixed right-5 ${
+                isScrollingUp ? "top-5" : "top-0"
+              } hidden max-w-[450px] w-[450px] bg-gradient-to-br ${
+                hasScrolled
+                  ? "from-[#000000] via-[#1b1b1b] to-[#101420] shadow-lg shadow-black " // light + shadow
+                  : "from-[#000000] via-[#1b1b1b] to-[#101420]" // dark, no shadow
+              } flex-col items-end px-8 rounded-bl-3xl ml-auto`}
+            >
               <ul className="text-white flex gap-10  py-3 px-4">
                 <li className="cursor-pointer text-white hover:underline ">
                   Home
@@ -354,8 +412,8 @@ const Home = () => {
               </div>
             </div>
           </div>
-          
-          <div>
+
+          <div className="pt-10">
             <div className="sm:px-9 px-5  text-white pt-6 overflow-y-auto custom-scrollbar">
               <p className="sm:text-[30px] text-[28px] italic pb-3 font-extrabold ">
                 Welcome to My Abode
@@ -441,85 +499,246 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            
-              <div className="text-white sm:px-8 px-3 py-5  ">
-                <div class=" rounded-lg bg-gradient-to-br from-[#1f1f1f] via-[#3b3b3b] to-[#0f172a]">
-                  <div class=" rounded-lg py-4 ">
-                    <p className="pb-2 text-[30px] font-extrabold ">
-                      💡 About Me
-                    </p>
-                    <p className="sm:px-9 px-2  tracking-wide ">
-                      I’m Dandy, a passionate Full-Stack Web Developer with a
-                      creative eye and a problem-solving mindset. I specialize
-                      in building clean, responsive, and interactive web
-                      experiences using tools like React, Tailwind CSS, and
-                      Node.js. From crafting beautiful frontend interfaces to
-                      setting up solid backend foundations. <br /> <br />I love
-                      bringing ideas to life through code. I began my coding
-                      journey at 16, and ever since, I’ve been constantly
-                      pushing boundaries — learning, experimenting, and
-                      improving every day. I pay attention to detail, care about
-                      user experience, and enjoy creating solutions that are
-                      fast, functional, and visually compelling. Whether it’s
-                      building a Landing page, a web app, or diving into new
-                      tech stacks, I’m always excited to take on new challenges
-                      and grow as a developer. Let’s create something amazing
-                      together 🚀
-                    </p>
+
+            <div className="text-white sm:px-8 px-3 py-5  ">
+              <div class=" rounded-lg bg-gradient-to-br from-[#1f1f1f] via-[#3b3b3b] to-[#0f172a]">
+                <div class=" rounded-lg py-4 ">
+                  <p className="pb-2 text-[30px] font-extrabold ">
+                    💡 About Me
+                  </p>
+                  <p className="sm:px-9 px-2  tracking-wide ">
+                    I’m Dandy, a passionate Full-Stack Web Developer with a
+                    creative eye and a problem-solving mindset. I specialize in
+                    building clean, responsive, and interactive web experiences
+                    using tools like React, Tailwind CSS, and Node.js. From
+                    crafting beautiful frontend interfaces to setting up solid
+                    backend foundations. <br /> <br />I love bringing ideas to
+                    life through code. I began my coding journey at 16, and ever
+                    since, I’ve been constantly pushing boundaries — learning,
+                    experimenting, and improving every day. I pay attention to
+                    detail, care about user experience, and enjoy creating
+                    solutions that are fast, functional, and visually
+                    compelling. Whether it’s building a Landing page, a web app,
+                    or diving into new tech stacks, I’m always excited to take
+                    on new challenges and grow as a developer. Let’s create
+                    something amazing together 🚀
+                  </p>
+                </div>
+              </div>
+
+              <div className="py-3">
+                <p className="py-4  text-[25px] font-extrabold ">What I Do</p>
+                <div>
+                  <div className="grid sm-custom:grid-cols-2 grid-cols-1 gap-5  ">
+                    <div className=" flex  gap-3 border-l-2 border-l-[#3b3b3b] px-3 py-4 leading-relaxed border-r-2 rounded-l-lg rounded-r-lg border-r-[#0f172a] shadow-lg shadow-[#3b3b3b] ">
+                      <p className=" translate-y-1 ">
+                        <FaLaptopCode
+                          size={30}
+                          title="Full-Stack Development"
+                        />
+                      </p>
+                      <p>
+                        <span className="sm:text-[20px] text-[18px] py-3 font-medium">
+                          Full-Stack Development
+                        </span>
+                        <br />
+                        <span className="sm:text-[16px] text-[14px] tracking-widest ">
+                          I build complete web solutions from scratch —
+                          combining React for dynamic user interfaces with
+                          Node.js and Express on the backend to ensure speed,
+                          scalability, and stability.
+                        </span>
+                      </p>
+                    </div>
+
+                    <div className=" flex  gap-3 border-l-2 border-l-[#3b3b3b] px-3 py-4 leading-relaxed border-r-2 rounded-l-lg rounded-r-lg border-r-[#0f172a] shadow-lg shadow-[#3b3b3b] ">
+                      <p className=" translate-y-1 ">
+                        <FiMonitor className="text-2xl text-white" />
+                      </p>
+                      <p>
+                        <span className="text-[20px] py-2 font-medium">
+                          Frontend Design & Engineering
+                        </span>
+                        <br />
+                        <span className="sm:text-[16px] text-[14px] tracking-widest ">
+                          I set up robust server-side logic, manage user
+                          authentication, and connect to databases using tools
+                          like Express.js and several Databases. I ensure
+                          seamless data flow and app reliability.
+                        </span>
+                      </p>
+                    </div>
+
+                    <div className=" flex  gap-3 border-l-2 border-l-[#3b3b3b] px-3 py-4 leading-relaxed border-r-2 rounded-l-lg rounded-r-lg border-r-[#0f172a] shadow-lg shadow-[#3b3b3b] ">
+                      <p className=" translate-y-1 ">
+                        <TbApi
+                          size={30}
+                          title="Backend Logic & API Integration"
+                        />
+                      </p>
+                      <p>
+                        <span className="text-[20px] py-2 font-medium">
+                          Backend Logic & API Integration
+                        </span>
+                        <br />
+                        <span className="sm:text-[16px] text-[14px] tracking-widest ">
+                          I set up robust server-side logic, manage user
+                          authentication, and connect to databases using tools
+                          like Express.js and SQLite. I ensure seamless data
+                          flow and app reliability.
+                        </span>
+                      </p>
+                    </div>
+
+                    <div className=" flex  gap-3 border-l-2 border-l-[#3b3b3b] px-3 py-4 leading-relaxed border-r-2 rounded-l-lg rounded-r-lg border-r-[#0f172a] shadow-lg shadow-[#3b3b3b] ">
+                      <p className=" translate-y-1 ">
+                        <FiTool className="text-2xl text-white" />
+                      </p>
+                      <p>
+                        <span className="text-[20px] py-2 font-medium">
+                          Developer Tools & Utilities best icon
+                        </span>
+                        <br />
+                        <span className="sm:text-[16px] text-[14px] tracking-widest ">
+                          I create helpful tools like formatters, encoders,
+                          converters, and manyother tools to support other
+                          developers and improve productivity — always built
+                          with speed, simplicity, and functionality in mind.
+                        </span>
+                      </p>
+                    </div>
+
+                    <div className=" flex  gap-3 border-l-2 border-l-[#3b3b3b] px-3 py-4 leading-relaxed border-r-2 rounded-l-lg rounded-r-lg border-r-[#0f172a] shadow-lg shadow-[#3b3b3b] ">
+                      <p className=" translate-y-1 ">
+                        <MdPhoneIphone className="text-2xl text-white" />
+                      </p>
+                      <p>
+                        <span className="text-[20px] py-2 font-medium">
+                          Mobile-First Responsive Design
+                        </span>
+                        <br />
+                        <span className="sm:text-[16px] text-[14px] tracking-widest ">
+                          I design with a mobile-first mindset, ensuring every
+                          interface feels natural, responsive, and smooth on
+                          smaller screens. From layouts to touch elements, I
+                          make sure users on smartphones and tablets enjoy a
+                          seamless experience.
+                        </span>
+                      </p>
+                    </div>
+
+                    <div className=" flex  gap-3 border-l-2 border-l-[#3b3b3b] px-3 py-4 leading-relaxed border-r-2 rounded-l-lg rounded-r-lg border-r-[#0f172a] shadow-lg shadow-[#3b3b3b] ">
+                      <p className=" translate-y-1 ">
+                        <FaBug className="text-2xl text-white" />
+                      </p>
+                      <p>
+                        <span className="text-[20px] py-2 font-medium">
+                          Problem Solving & Debugging
+                        </span>
+                        <br />
+                        <span className="sm:text-[16px] text-[14px] tracking-widest ">
+                          I enjoy digging into challenges, breaking down complex
+                          bugs, and finding efficient solutions. Whether it’s a
+                          frontend glitch or backend issue, I approach every
+                          problem with logic, patience, and a goal to make
+                          things better and cleaner.
+                        </span>
+                      </p>
+                    </div>
                   </div>
                 </div>
-
-                <div className="py-3">
-                  <p className="py-4  text-[25px] font-extrabold ">What I Do</p>
-                  <div>
-                    <div className="grid sm-custom:grid-cols-2 grid-cols-1 gap-5  ">
-                      <div className=" flex  gap-3 border-l-2 border-l-[#3b3b3b] px-3 py-4 leading-relaxed border-r-2 rounded-l-lg rounded-r-lg border-r-[#0f172a] shadow-lg shadow-[#3b3b3b] ">
-                        <p className=" translate-y-1 ">
-                          <FaLaptopCode
-                            size={30}
-                            title="Full-Stack Development"
-                          />
-                        </p>
-                        <p>
-                          <span className="sm:text-[20px] text-[18px] py-3 font-medium">
-                            Full-Stack Development
-                          </span>
-                          <br />
-                          <span className="sm:text-[16px] text-[14px] tracking-widest ">
-                            I build complete web solutions from scratch —
-                            combining React for dynamic user interfaces with
-                            Node.js and Express on the backend to ensure speed,
-                            scalability, and stability.
-                          </span>
-                        </p>
+              </div>
+              <div>
+                <p className="text-[25px] font-bold py-3 ">Testimonials</p>
+                <div className="flex flex-nowrap gap-5 py-5 overflow-x-auto gradient-scroll ">
+                  <div
+                    className="bg-[#2c2c2c] shadow-lg shadow-[#0f0f0f] cursor-pointer min-w-[400px] max-w-[400px] px-3  rounded-lg relative  "
+                    onClick={() => setShowTestimonialModal("testimonial1")}
+                  >
+                    <p className="translate-x-[90px] font-semibold text-[17px] pt-3 pb-1 ">
+                      ——Chioma N.
+                    </p>
+                    <p className="pb-2 italic ">
+                      “Working with Dandy was a game changer. He took our
+                      outdated website and transformed it into a sleek, modern
+                      platform. His eye for design and ...."
+                    </p>
+                    <div className="bg-[#1f1f1f] max-w-[70px] py-1 px-3 rounded-lg absolute -top-5 left-5 ">
+                      <div className="flex justify-center items-center  ">
+                        <img
+                          src={img1}
+                          alt=""
+                          className="max-w-[60px] w-[50px] h-[50px] rounded-full object-cover "
+                        />
                       </div>
+                    </div>
+                  </div>
 
-                      <div className=" flex  gap-3 border-l-2 border-l-[#3b3b3b] px-3 py-4 leading-relaxed border-r-2 rounded-l-lg rounded-r-lg border-r-[#0f172a] shadow-lg shadow-[#3b3b3b] ">
-                        <p className=" translate-y-1 ">
-                          <TbApi
-                            size={30}
-                            title="Backend Logic & API Integration"
-                          />
-                        </p>
-                        <p>
-                          <span className="text-[20px] py-2 font-medium">
-                            Backend Logic & API Integration
-                          </span>
-                          <br />
-                         <span className="sm:text-[16px] text-[14px] tracking-widest ">
-                            I set up robust server-side logic, manage user
-                            authentication, and connect to databases using tools
-                            like Express.js and SQLite. I ensure seamless data
-                            flow and app reliability.
-                          </span>
-                        </p>
+                  <div
+                    className="bg-[#2c2c2c] shadow-lg shadow-[#0f0f0f] cursor-pointer min-w-[400px] max-w-[400px] px-3  rounded-lg relative  "
+                    onClick={() => setShowTestimonialModal("testimonial2")}
+                  >
+                    <p className="translate-x-[90px] font-semibold text-[17px] pt-3 pb-1 ">
+                      ——James A.
+                    </p>
+                    <p className="pb-2 italic ">
+                      “Dandy was incredibly responsive and professional
+                      throughout the entire project. He delivered a beautiful,
+                      functional site ahead of ...."
+                    </p>
+                    <div className="bg-[#1f1f1f] max-w-[70px] py-1 px-3 rounded-lg absolute -top-5 left-5 ">
+                      <div className="flex justify-center items-center  ">
+                        <img
+                          src={img2}
+                          alt=""
+                          className="max-w-[60px] w-[50px] h-[50px] rounded-full object-cover "
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    className="bg-[#2c2c2c] shadow-lg shadow-[#0f0f0f] cursor-pointer min-w-[400px] max-w-[400px] px-3  rounded-lg relative  "
+                    onClick={() => setShowTestimonialModal("testimonial3")}
+                  >
+                    <p className="translate-x-[90px] font-semibold text-[17px] pt-3 pb-1 ">
+                      ——Tolu E.
+                    </p>
+                    <p className="pb-2 italic ">
+                      “From the first meeting to final launch, Dandy understood
+                      our goals and exceeded expectations. The frontend is
+                      clean, fast, and ....”
+                    </p>
+                    <div className="bg-[#1f1f1f] max-w-[70px] py-1 px-3 rounded-lg absolute -top-5 left-5 ">
+                      <div className="flex justify-center items-center  ">
+                        <img
+                          src={img3}
+                          alt=""
+                          className="max-w-[60px] w-[50px] h-[50px] rounded-full object-cover "
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-           
+            </div>
           </div>
+          {showTestimonialModal === "testimonial1" && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 pointer-events-auto select-auto">
+              <Testimonial1 onClose={() => setShowTestimonialModal(null)} />
+            </div>
+          )}
+          {showTestimonialModal === "testimonial2" && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 pointer-events-auto select-auto">
+              <Testimonial2 onClose={() => setShowTestimonialModal(null)} />
+            </div>
+          )}
+
+          {showTestimonialModal === "testimonial3" && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 pointer-events-auto select-auto">
+              <Testimonial3 onClose={() => setShowTestimonialModal(null)} />
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@ export default {
         'lg-customm': { min: '560px', max: '886px' },
         'lg-custommm': { min:'1024px'},
         'sm-custom': { min:'700px' },
-       
+        'sm-customm': { min: '1024px', max: '1327px' },
       },
 
       fontFamily: {
@@ -28,6 +28,8 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+  require('tailwind-scrollbar-hide')
+]
 }
 
