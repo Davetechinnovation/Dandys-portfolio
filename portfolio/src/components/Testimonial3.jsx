@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import img3 from "../assets/Tdandy-tol.jpg";
 import { FaQuoteLeft } from "react-icons/fa";
 
-const Testimonial3 = ({ onClose }) => {
+const Testimonial3 = ({ onClose, shouldClose }) => {
   const modalRef = useRef(null);
   const [isLeaving, setIsLeaving] = React.useState(false);
 
@@ -31,12 +31,19 @@ const Testimonial3 = ({ onClose }) => {
     }, 500); // match animation duration
   };
 
+  // If shouldClose is triggered from parent, play animation then call onClose
+  React.useEffect(() => {
+    if (shouldClose && !isLeaving) {
+      handleClose();
+    }
+    // eslint-disable-next-line
+  }, [shouldClose]);
+
   return (
-    <div className="relative">
-      <div className="flex justify-center items-center min-h-screen fixed top-0 bottom-0 left-0 mx-2  right-0 z-50">
+     <div className="relative flex justify-center px-2 items-center">
         <div
           ref={modalRef}
-          className="bg-[#1f1f1f] max-w-[500px] w-[500px] py-4 px-3 rounded-lg relative"
+          className="bg-[#1f1f1f] max-w-[500px] w-full py-4 px-3 rounded-lg relative"
         >
           <div className="flex gap-3 items-start ">
             <div className="flex flex-col items-center justify-end ">
@@ -77,7 +84,7 @@ const Testimonial3 = ({ onClose }) => {
                 was equally impressive.”
               </p>
             </div>
-          </div>
+       
         </div>
       </div>
     </div>

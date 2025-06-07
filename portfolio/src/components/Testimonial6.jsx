@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import img2 from "../assets/dandy-james.jpg";
+import img4 from "../assets/dandy-amada.jpg";
 import { FaQuoteLeft } from "react-icons/fa";
 
-const Testimonial2 = ({ onClose, shouldClose }) => {
+const Testimonial6 = ({ onClose, shouldClose }) => {
   const modalRef = useRef(null);
   const [isLeaving, setIsLeaving] = React.useState(false);
 
@@ -50,7 +50,7 @@ const Testimonial2 = ({ onClose, shouldClose }) => {
             <div className="bg-[#383838] max-w-[70px] py-1 px-3 rounded-md  ">
               <div className="flex justify-center items-center  ">
                 <img
-                  src={img2}
+                  src={img4}
                   alt=""
                   className="max-w-[60px] w-[50px] h-[50px] rounded-full object-cover "
                 />
@@ -63,7 +63,7 @@ const Testimonial2 = ({ onClose, shouldClose }) => {
 
           <div className="text-white">
             <p className="font-semibold sm:text-[19px] text-[17px] flex gap-2 justify-between items-center ">
-              <span>—James A., Digital Consultant</span>
+              <span>—Amanda Blake, Product Manager at TechNova Solutions</span>
               {onClose && (
                 <span
                   onClick={handleClose}
@@ -74,9 +74,14 @@ const Testimonial2 = ({ onClose, shouldClose }) => {
                 </span>
               )}
             </p>
-            <p className="py-1 text-[gray] text-[15px] sm:text-[17px] italic  ">18 November, 2024</p>
+            <p className="py-1 text-[gray] text-[15px] sm:text-[17px] italic  ">
+              31 march, 2025
+            </p>
             <p className="text-[15px] sm:text-[17px] italic ">
-              “Dandy was incredibly responsive and professional throughout the entire project. He delivered a beautiful, functional site ahead of schedule. It’s rare to find someone so young yet so skilled.”
+              “Dandy turned our scattered ideas into a sleek, responsive app
+              with precision and creativity. His design sense, clear
+              communication, and technical skill are rare — a standout developer
+              I’d work with again in a heartbeat.”
             </p>
           </div>
         </div>
@@ -85,4 +90,4 @@ const Testimonial2 = ({ onClose, shouldClose }) => {
   );
 };
 
-export default Testimonial2;
+export default Testimonial6;
