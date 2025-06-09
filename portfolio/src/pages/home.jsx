@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet";
-import img from "../assets/Dandy's-image.jpg";
+import img from "../assets/Dandy-image.jpg";
 import img1 from "../assets/dandy-chioma.jpg";
 import img2 from "../assets/dandy-james.jpg";
 import img3 from "../assets/Tdandy-tol.jpg";
@@ -108,7 +108,7 @@ const Home = () => {
         />
         <meta
           name="keywords"
-          content="Full stack developer Nigeria, React developer, Node.js expert, Tailwind CSS, JavaScript developer, Nigerian web developer, frontend developer, backend developer, hire developer Nigeria, freelance developer, remote web developer, software engineer Nigeria, Lagos, Abuja, Port Harcourt, modern web development, responsive design, bug fixing, API development, web performance, developer portfolio"
+          content="Full stack developer Nigeria, React developer, Node.js expert, Tailwind CSS, JavaScript developer, Nigerian web developer, frontend developer, backend developer, hire developer Nigeria, freelance developer, remote web developer, software engineer Nigeria, Lagos, Abuja, Port Harcourt, Enugu modern web development, responsive design, bug fixing, API development, web performance, developer portfolio"
         />
         <meta
           property="og:title"
@@ -125,8 +125,9 @@ const Home = () => {
         />
         <meta
           property="og:image"
-          content="https://dandys-portfolio.vercel.app/assets/Dandy's-image.jpg"
+          content="https://dandys-portfolio.vercel.app/Dandy-image.jpg"
         />
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
