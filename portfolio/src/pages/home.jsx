@@ -155,7 +155,7 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Dandy — Full Stack Web Developer | Hire Me CSS</title>
+        <title>Dandy — Full Stack Web Developer | Hire Me</title>
 
         <meta
           name="description"
