@@ -155,15 +155,13 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>
-          Dandy — Full Stack Web Developer Nigeria — React, Node.js & Tailwind
-          CSS | Hire Me CSS
-        </title>
+        <title>Dandy — Full Stack Web Developer | Hire Me CSS</title>
 
         <meta
           name="description"
-          content="Dandy (Dandave Udoka) is a skilled full stack web developer based in Nigeria, specializing in React, Node.js, and Tailwind CSS. Available for freelance, contract, and remote work. Explore his portfolio, testimonials, and contact info."
+          content="Dandy (Dandave Udoka) is a full stack developer skilled in React, Node.js, JavaScript & Tailwind CSS. Available for freelance and remote work."
         />
+
         <meta
           name="keywords"
           content="Full stack developer Nigeria, React developer, Node.js expert, Tailwind CSS, JavaScript developer, Nigerian web developer, frontend developer, backend developer, hire developer Nigeria, freelance developer, remote web developer, software engineer Nigeria, Lagos, Abuja, Port Harcourt, Enugu modern web development, responsive design, bug fixing, API development, web performance, developer portfolio"
@@ -174,13 +172,10 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {/* Open Graph tags */}
-        <meta
-          property="og:title"
-          content="Dandy | Full Stack Web Developer in Nigeria"
-        />
+        <meta property="og:title" content="Dandy | Full Stack Web Developer" />
         <meta
           property="og:description"
-          content="Dandy (Dandave Udoka) is a Nigerian full stack web developer skilled in React, Node.js, and modern technologies. Browse his work, testimonials, and contact details."
+          content="Dandy (Dandave Udoka) is a full stack developer skilled in React, Node.js, JavaScript & Tailwind CSS. Available for freelance and remote work."
         />
         <meta property="og:type" content="website" />
         <meta
@@ -194,13 +189,10 @@ const Home = () => {
 
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Dandy | Full Stack Web Developer in Nigeria"
-        />
+        <meta name="twitter:title" content="Dandy | Full Stack Web Developer" />
         <meta
           name="twitter:description"
-          content="Dandy (Dandave Udoka) is a full stack web developer from Nigeria. Expert in React, Node.js, and responsive design. Available for hire."
+          content="Dandy (Dandave Udoka) is a full stack developer skilled in React, Node.js, JavaScript & Tailwind CSS. Available for freelance and remote work."
         />
         <meta
           name="twitter:image"
@@ -213,28 +205,45 @@ const Home = () => {
 
       {/* JSON-LD Structured Data */}
       <Helmet>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Dandy (Dandave Udoka)",
-              url: "https://dandys-portfolio.vercel.app/",
-              jobTitle: "Full Stack Web Developer",
-              worksFor: {
-                "@type": "Organization",
-                name: "Freelance",
-              },
-              sameAs: [
-                "https://api.whatsapp.com/send?phone=2349168071385&text=Hello%20Dandy%2C%20I%20got%20your%20number%20from%20your%20portfolio%20and%20would%20like%20to%20connect%20I%20am%20_________.",
-                "https://www.instagram.com/davetech_innovation/",
-                "https://x.com/Davetechinnov",
-              ],
-            }),
-          }}
-        />
+        {/* WebSite Structured Data */}
+        <script type="application/ld+json">
+          {`
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Dandy's Portfolio",
+      "url": "https://dandys-portfolio.vercel.app",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://dandys-portfolio.vercel.app/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    `}
+        </script>
+
+        {/* WebPage Structured Data */}
+        <script type="application/ld+json">
+          {`
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Dandy — Full Stack Web Developer",
+      "url": "https://dandys-portfolio.vercel.app",
+      "description": "Dandy (Dandave Udoka) is a full stack developer skilled in React, Node.js, JavaScript & Tailwind CSS. Available for freelance and remote work.",
+      "author": {
+        "@type": "Person",
+        "name": "Dandy (Dandave Udoka)"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Freelance"
+      }
+    }
+    `}
+        </script>
       </Helmet>
+
       <div
         className={`bg-[#111111] min-h-screen px-3 py-4 sm:p-5 min-w-[300px] overflow-x-auto${
           showTestimonialModal ? " pointer-events-none select-none" : ""
