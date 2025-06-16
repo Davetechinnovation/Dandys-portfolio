@@ -84,7 +84,7 @@ const Home = () => {
   const lastScrollY = useRef(window.scrollY);
   const [showTestimonialModal, setShowTestimonialModal] = useState(null);
   const [selectedPage, setSelectedPage] = useState("home");
-  // No auto-scroll, no refs, no handlers needed for testimonials
+  // Navbar scroll effect: top-5 when scrolling up, top-0 when scrolling down
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -99,6 +99,34 @@ const Home = () => {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // --- Testimonial Carousel Scroll State ---
+  const testimonialScrollRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  // Update scroll arrow visibility
+  const updateTestimonialScroll = () => {
+    const container = testimonialScrollRef.current;
+    if (!container) return;
+    // Allow for small rounding errors
+    setCanScrollLeft(container.scrollLeft > 5);
+    setCanScrollRight(
+      container.scrollLeft + container.offsetWidth < container.scrollWidth - 5
+    );
+  };
+
+  useEffect(() => {
+    const container = testimonialScrollRef.current;
+    if (!container) return;
+    updateTestimonialScroll();
+    container.addEventListener("scroll", updateTestimonialScroll);
+    window.addEventListener("resize", updateTestimonialScroll);
+    return () => {
+      container.removeEventListener("scroll", updateTestimonialScroll);
+      window.removeEventListener("resize", updateTestimonialScroll);
+    };
   }, []);
   const [toggle, setToggle] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -921,71 +949,76 @@ const Home = () => {
                             }}
                           />
                           {/* Scroll Arrows */}
-                          <button
-                            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-[#222] bg-opacity-70 hover:bg-opacity-100 text-white rounded-full p-2 shadow-lg transition disabled:opacity-30"
-                            style={{ display: "flex" }}
-                            aria-label="Scroll testimonials left"
-                            onClick={() => {
-                              const container =
-                                document.getElementById("testimonial-scroll");
-                              if (!container) return;
-                              const card = container.children[0];
-                              if (card) {
-                                const scrollAmount = card.offsetWidth + 20; // 20px gap
-                                container.scrollBy({
-                                  left: -scrollAmount,
-                                  behavior: "smooth",
-                                });
-                              }
-                            }}
-                            disabled={false}
-                          >
-                            <svg
-                              width="24"
-                              height="24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
+                          {/* Left Arrow: only show if canScrollLeft */}
+                          {canScrollLeft && (
+                            <button
+                              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-[#222] bg-opacity-70 hover:bg-opacity-100 text-white rounded-full p-2 shadow-lg transition disabled:opacity-30"
+                              style={{ display: "flex" }}
+                              aria-label="Scroll testimonials left"
+                              onClick={() => {
+                                const container = testimonialScrollRef.current;
+                                if (!container) return;
+                                const card = container.children[0];
+                                if (card) {
+                                  const scrollAmount = card.offsetWidth + 20; // 20px gap
+                                  container.scrollBy({
+                                    left: -scrollAmount,
+                                    behavior: "smooth",
+                                  });
+                                }
+                              }}
+                              disabled={!canScrollLeft}
                             >
-                              <polyline points="15 18 9 12 15 6" />
-                            </svg>
-                          </button>
-                          <button
-                            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-[#222] bg-opacity-70 hover:bg-opacity-100 text-white rounded-full p-2 shadow-lg transition disabled:opacity-30"
-                            style={{ display: "flex" }}
-                            aria-label="Scroll testimonials right"
-                            onClick={() => {
-                              const container =
-                                document.getElementById("testimonial-scroll");
-                              if (!container) return;
-                              const card = container.children[0];
-                              if (card) {
-                                const scrollAmount = card.offsetWidth + 20; // 20px gap
-                                container.scrollBy({
-                                  left: scrollAmount,
-                                  behavior: "smooth",
-                                });
-                              }
-                            }}
-                            disabled={false}
-                          >
-                            <svg
-                              width="24"
-                              height="24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
+                              <svg
+                                width="24"
+                                height="24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              >
+                                <polyline points="15 18 9 12 15 6" />
+                              </svg>
+                            </button>
+                          )}
+                          {/* Right Arrow: only show if canScrollRight */}
+                          {canScrollRight && (
+                            <button
+                              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-[#222] bg-opacity-70 hover:bg-opacity-100 text-white rounded-full p-2 shadow-lg transition disabled:opacity-30"
+                              style={{ display: "flex" }}
+                              aria-label="Scroll testimonials right"
+                              onClick={() => {
+                                const container = testimonialScrollRef.current;
+                                if (!container) return;
+                                const card = container.children[0];
+                                if (card) {
+                                  const scrollAmount = card.offsetWidth + 20; // 20px gap
+                                  container.scrollBy({
+                                    left: scrollAmount,
+                                    behavior: "smooth",
+                                  });
+                                }
+                              }}
+                              disabled={!canScrollRight}
                             >
-                              <polyline points="9 18 15 12 9 6" />
-                            </svg>
-                          </button>
+                              <svg
+                                width="24"
+                                height="24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              >
+                                <polyline points="9 18 15 12 9 6" />
+                              </svg>
+                            </button>
+                          )}
                           <div
+                            ref={testimonialScrollRef}
                             id="testimonial-scroll"
-                            className="flex sm:pl-4 pl-2 flex-nowrap gap-5 py-5 overflow-x-auto gradient-scroll scrollbar-hide relative"
+                            className="flex pl-4  flex-nowrap gap-5 py-5 overflow-x-auto gradient-scroll scrollbar-hide relative"
                             style={{ scrollBehavior: "smooth" }}
                           >
                             {testimonials.map((testimonial, idx) => (
