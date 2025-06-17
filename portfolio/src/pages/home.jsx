@@ -21,10 +21,13 @@ import Testimonial3Modal from "../components/Testimonial3Modal";
 import Testimonial4Modal from "../components/Testimonial4Modal";
 import Testimonial5Modal from "../components/Testimonial5Modal";
 import Testimonial6Modal from "../components/Testimonial6Modal";
-
+import img7 from "../assets/clients-logo.png";
 import Resume from "./Resume";
 import Portfolio from "./Portfolio";
 import Contact from "./Contact";
+import img8 from "../assets/client-logo1.png";
+import img9 from "../assets/client-logo-2.png";
+import img10 from "../assets/client-logo-3.jpg";
 
 const testimonials = [
   {
@@ -601,14 +604,14 @@ const Home = () => {
               {/* Overlay to block background interaction when menu is open */}
               {isOpen && (
                 <div
-                  className="fixed inset-0 w-full h-full bg-black bg-opacity-50 z-30 transition-opacity duration-300"
+                  className="fixed inset-0 w-full h-full  bg-black bg-opacity-50 z-30 transition-opacity duration-300"
                   style={{ pointerEvents: "auto" }}
                   onClick={() => setIsOpen(false)}
                   onTouchStart={() => setIsOpen(false)}
                 />
               )}
               <div
-                className={`fixed -top-20 left-0 w-full h-[100dvh]   rounded-b-full bg-gradient-to-br from-black via-[#1b1b1b] to-[#101420]  z-40 transition-transform duration-500 ease-in-out ${
+                className={`fixed -top-20 left-0 w-full h-[100dvh] shadow-2xl shadow-black  rounded-b-full bg-gradient-to-br from-black via-[#1b1b1b] to-[#101420]  z-40 transition-transform duration-500 ease-in-out ${
                   isOpen
                     ? "translate-y-0"
                     : "-translate-y-full pointer-events-none"
@@ -618,7 +621,7 @@ const Home = () => {
               >
                 <p
                   onClick={() => setIsOpen(!isOpen)}
-                  className=" text-white flex flex-col items-end translate-y-24 px-10 "
+                  className=" text-white flex flex-col items-end translate-y-28 px-10 "
                 >
                   <X size={28} />
                 </p>
@@ -1047,6 +1050,51 @@ const Home = () => {
                                 </div>
                               </article>
                             ))}
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                    <section aria-labelledby="clients">
+                      <div>
+                        <h2 className="text-[25px] font-bold py-3 ">
+                          <span className=" border-b-[3px] border-transparent ">
+                            Cli
+                          </span>
+                          ents
+                        </h2>
+                        <div className="bg-gradient-to-br from-[#1f1f1f] via-[#3b3b3b] to-[#0f172a] rounded-md ">
+                          <div className=" flex flex-wrap-reverse flex-row-reverse  gap-5  justify-center lg:justify-betwee px-5 py-2 items-center  w-full ">
+                            <div className="max-w-[200px] w-full  ">
+                              <img
+                                src={img7}
+                                alt="Clients Logo"
+                                className="w-full  rounded-md"
+                              />
+                            </div>
+
+                            <div className="max-w-[200px] w-full  ">
+                              <img
+                                src={img8}
+                                alt="Clients Logo"
+                                className="w-full  rounded-md"
+                              />
+                            </div>
+
+                            <div className="max-w-[200px] w-full  ">
+                              <img
+                                src={img9}
+                                alt="Clients Logo"
+                                className="w-full  rounded-md"
+                              />
+                            </div>
+
+                            <div className="max-w-[130px] w-full  ">
+                              <img
+                                src={img10}
+                                alt="Clients Logo"
+                                className="w-full  rounded-md"
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>
