@@ -611,7 +611,7 @@ const Home = () => {
                 />
               )}
               <div
-                className={`fixed -top-20 left-0 w-full h-[100dvh] shadow-2xl shadow-black  rounded-b-full bg-gradient-to-br from-black via-[#1b1b1b] to-[#101420]  z-40 transition-transform duration-500 ease-in-out ${
+                className={`fixed top-0 left-0 w-full h-[80%] shadow-2xl shadow-black  rounded-b-full bg-gradient-to-br from-black via-[#1b1b1b] to-[#101420]  z-40 transition-transform duration-500 ease-in-out ${
                   isOpen
                     ? "translate-y-0"
                     : "-translate-y-full pointer-events-none"
@@ -621,7 +621,7 @@ const Home = () => {
               >
                 <p
                   onClick={() => setIsOpen(!isOpen)}
-                  className=" text-white flex flex-col items-end translate-y-28 px-10 "
+                  className=" text-white flex flex-col items-end translate-y-16 px-12 "
                 >
                   <X size={28} />
                 </p>
@@ -927,15 +927,15 @@ const Home = () => {
                         </div>
                       </div>
                     </section>
-                    <section aria-labelledby="testimonials-heading">
+                    <section aria-labelledby="testimonials">
                       <h2
-                        id="testimonials-heading"
+                        id="testimonials"
                         className="text-[25px] font-bold py-3 "
                       >
                         Testimonials
                       </h2>
                       <div>
-                        <div className="relative">
+                        <div className="relative ">
                           {/* Gradient edges */}
                           <div
                             className="pointer-events-none absolute left-0 top-0 h-full w-2 z-10"
@@ -1021,13 +1021,13 @@ const Home = () => {
                           <div
                             ref={testimonialScrollRef}
                             id="testimonial-scroll"
-                            className="flex pl-4  flex-nowrap gap-5 py-5 overflow-x-auto gradient-scroll scrollbar-hide relative"
+                            className="flex pl-4 flex-nowrap gap-5 py-5 overflow-x-auto gradient-scroll scrollbar-hide relative"
                             style={{ scrollBehavior: "smooth" }}
                           >
                             {testimonials.map((testimonial, idx) => (
                               <article
                                 key={idx}
-                                className="bg-[#2c2c2c] shadow-lg shadow-[#0f0f0f] cursor-pointer min-w-[300px] sm:min-w-[400px] max-w-[400px] w-full px-3  rounded-lg relative  "
+                                className="bg-[#2c2c2c] shadow-lg shadow-[#0f0f0f] cursor-pointer min-w-[300px] sm:min-w-[400px] max-w-[400px] w-full px-3 rounded-lg relative"
                                 onClick={() =>
                                   setShowTestimonialModal(testimonial.modal)
                                 }
@@ -1055,48 +1055,88 @@ const Home = () => {
                       </div>
                     </section>
                     <section aria-labelledby="clients">
-                      <div>
+                      <div className="pb-5">
                         <h2 className="text-[25px] font-bold py-3 ">
                           <span className=" border-b-[3px] border-transparent ">
                             Cli
                           </span>
                           ents
                         </h2>
-                        <div className="bg-gradient-to-br from-[#1f1f1f] via-[#3b3b3b] to-[#0f172a] rounded-md ">
-                          <div className=" flex flex-wrap-reverse flex-row-reverse  gap-5  justify-center lg:justify-betwee px-5 py-2 items-center  w-full ">
-                            <div className="max-w-[200px] w-full  ">
-                              <img
-                                src={img7}
-                                alt="Clients Logo"
-                                className="w-full  rounded-md"
-                              />
-                            </div>
+                        <div className="bg-gradient-to-br from-[#1f1f1f] via-[#3b3b3b] to-[#0f172a] rounded-md overflow-hidden">
+                          <div className="relative w-full h-[120px]">
+                            <div className="absolute top-0 left-0 flex animate-infinite-scroll whitespace-nowrap h-full">
+                              {/* Logo row 1 */}
+                              <div className="flex flex-nowrap items-center space-x-8 h-full">
+                                <div className="min-w-[200px] w-[200px] flex-shrink-0 flex items-center justify-center">
+                                  <img
+                                    src={img7}
+                                    alt="Clients Logo"
+                                    className="w-full rounded-md"
+                                  />
+                                </div>
+                                <div className="min-w-[200px] w-[200px] flex-shrink-0 flex items-center justify-center">
+                                  <img
+                                    src={img8}
+                                    alt="Clients Logo"
+                                    className="w-full rounded-md"
+                                  />
+                                </div>
+                                <div className="min-w-[200px] w-[200px] flex-shrink-0 flex items-center justify-center">
+                                  <img
+                                    src={img9}
+                                    alt="Clients Logo"
+                                    className="w-full rounded-md"
+                                  />
+                                </div>
+                                <div className="min-w-[130px] w-[130px] flex-shrink-0 flex items-center justify-center">
+                                  <img
+                                    src={img10}
+                                    alt="Clients Logo"
+                                    className="w-full rounded-md"
+                                  />
+                                </div>
+                              </div>
 
-                            <div className="max-w-[200px] w-full  ">
-                              <img
-                                src={img8}
-                                alt="Clients Logo"
-                                className="w-full  rounded-md"
-                              />
-                            </div>
-
-                            <div className="max-w-[200px] w-full  ">
-                              <img
-                                src={img9}
-                                alt="Clients Logo"
-                                className="w-full  rounded-md"
-                              />
-                            </div>
-
-                            <div className="max-w-[130px] w-full  ">
-                              <img
-                                src={img10}
-                                alt="Clients Logo"
-                                className="w-full  rounded-md"
-                              />
+                              {/* Logo row 2 (duplicate for seamless loop) */}
+                              <div className="flex flex-nowrap pl-8  items-center space-x-8 h-full">
+                                <div className="min-w-[200px] w-[200px] flex-shrink-0 flex items-center justify-center">
+                                  <img
+                                    src={img7}
+                                    alt="Clients Logo"
+                                    className="w-full rounded-md"
+                                  />
+                                </div>
+                                <div className="min-w-[200px] w-[200px] flex-shrink-0 flex items-center justify-center">
+                                  <img
+                                    src={img8}
+                                    alt="Clients Logo"
+                                    className="w-full rounded-md"
+                                  />
+                                </div>
+                                <div className="min-w-[200px] w-[200px] flex-shrink-0 flex items-center justify-center">
+                                  <img
+                                    src={img9}
+                                    alt="Clients Logo"
+                                    className="w-full rounded-md"
+                                  />
+                                </div>
+                                <div className="min-w-[130px] w-[130px] flex-shrink-0 flex items-center justify-center">
+                                  <img
+                                    src={img10}
+                                    alt="Clients Logo"
+                                    className="w-full rounded-md"
+                                  />
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
+                      </div>
+                    </section>
+
+                    <section aria-labelledby="Technologies">
+                      <div className=" p-5 border border-y-[#0c0c0c] bg-gradient-to-br from-[#1f1f1f6e] via-[#3b3b3b79] to-[#0f172a60]">
+                        <h2>Technologies</h2>
                       </div>
                     </section>
                   </div>
@@ -1149,3 +1189,13 @@ const Home = () => {
 };
 
 export default Home;
+
+/* Add this to your global CSS (e.g., index.css or App.css):
+@keyframes infinite-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-infinite-scroll {
+  animation: infinite-scroll 20s linear infinite;
+}
+*/
