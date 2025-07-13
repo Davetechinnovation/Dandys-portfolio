@@ -12,6 +12,7 @@ export default {
         'lg-custommm': { min:'1024px'},
         'sm-custom': { min:'700px' },
         'sm-customm': { min: '1024px', max: '1327px' },
+        'e': { min: '490px', max: '767px' },
       },
 
       fontFamily: {
