@@ -100,7 +100,7 @@ const Portfolio = () => {
             </a>
           </div>
           <div className="flex justify-center items-center">
-            <p className="flex items-center  gap-3 "><span><AlertTriangle /></span> <span>Still under development</span></p>
+            <p className="flex items-center  gap-3 text-yellow-400 "><span><AlertTriangle /></span> <span>Still under development</span></p>
           </div>
            
         </div>
