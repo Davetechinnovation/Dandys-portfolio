@@ -795,7 +795,7 @@ const Home = () => {
                           foundations. <br /> <br />I love bringing ideas to
                           life through code. I began my coding journey at 16,
                           and ever since, I’ve been constantly pushing
-                          boundaries — learning, experimenting, and improving
+                          boundaries  learning, experimenting, and improving
                           every day. I pay attention to detail, care about user
                           experience, and enjoy creating solutions that are
                           fast, functional, and visually compelling. Whether

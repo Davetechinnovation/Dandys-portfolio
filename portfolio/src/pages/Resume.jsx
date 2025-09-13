@@ -83,28 +83,40 @@ const Resume = () => {
       </div>
 
       <article className="px-6 flex flex-col gap-4">
-       
-
         <div>
           <p className="flex  gap-1 py-2">
             <span className=" translate-y-2 flex-shrink-0 w-[16px] h-[16px] rounded-full bg-gradient-to-br from-[#000000] via-[#1b1b1b] to-[#101420]  "></span>
             <span className="font-semibold text-[19px] ">
-              Junior Full Stack Developer — July 2024 → Nov 2024
+              Freelance Web Developer (Self-Employed) — July 2024 → Aug 2025
             </span>
           </p>
           <div>
-            <p className="text-[16px] font-medium px-3 pb-2">
-              CodeLoop Digital – Abuja, Nigeria (Hybrid)
-            </p>
+            <p className="text-[16px] font-medium px-3 pb-2">Remote</p>
             <p className="px-4 flex flex-col gap-3 ">
               <li>
-                Built full-stack features using React + Express.js + MongoDB.
+                Designed and built small-to-mid scale web applications for
+                clients using React, Next.js, and Tailwind CSS.
               </li>
               <li>
-                Created secure login/register flows using JWT and cookies.
+                Developed backend APIs with Node.js + Express.js and managed
+                databases like Mongodb and SQLite.
               </li>
               <li>
-                Integrated APIs for logistics tracking & admin dashboards.
+                Worked on features such as authentication, image upload, and
+                basic API integrations.
+              </li>
+              <li>
+                Delivered responsive, mobile-friendly solutions and improved
+                project deployment workflows using Vercel and Render.
+              </li>
+              <li>
+                Movie App (DandyPrime): A streaming platform built with
+                React/Next.js and Tailwind CSS, integrating APIs for movies, TV
+                shows, and sports.
+              </li>
+              <li>
+                Transport System App: A logistics/transport booking system with
+                Node.js + Express.js backend and SQLite database
               </li>
             </p>
           </div>
@@ -114,50 +126,29 @@ const Resume = () => {
           <p className="flex  gap-1 py-2">
             <span className=" translate-y-2 flex-shrink-0 w-[16px] h-[16px] rounded-full bg-gradient-to-br from-[#000000] via-[#1b1b1b] to-[#101420]  "></span>
             <span className="font-semibold text-[19px] ">
-              Junior Stack Developer — Dec 2024 → March 2025
+              Intern — Junior Web Developer — Sept 2025 → Present
             </span>
           </p>
           <div>
             <p className="text-[16px] font-medium px-3 pb-2">
-              DevSphere Innovations – Port Harcourt, Nigeria (Remote)
-            </p>
-            <p className="px-4 flex flex-col gap-3 max-w-[600px] ">
-              <li>
-                Developed internal dashboard apps with React and Tailwind.
-              </li>
-              <li>
-                Built RESTful APIs with Node.js and integrated different
-                databases such as SQLite, PlanetScale, and Neon.
-              </li>
-              <li>
-                Integrated APIs for logistics tracking & admin dashboards.
-              </li>
-            </p>
-          </div>
-        </div>
-
-        <div>
-          <p className="flex  gap-1 py-2">
-            <span className=" translate-y-2 flex-shrink-0 w-[16px] h-[16px] rounded-full bg-gradient-to-br from-[#000000] via-[#1b1b1b] to-[#101420]  "></span>
-            <span className="font-semibold text-[19px] ">
-              Junior Full Stack Developer — April 2025 → Present
-            </span>
-          </p>
-          <div>
-            <p className="text-[16px] font-medium px-3 pb-2">
-              Click-hub Remote (Awka)
+              DDM Academy – Awka, Nigeria (Onsite/Hybrid)
             </p>
             <p className="px-4 flex flex-col gap-3 ">
               <li>
-                Building full-stack features using React, TypeScript, and
-                Express.
+                Assisting in building web applications with React, TypeScript,
+                and Express.js.
               </li>
               <li>
-                Managing authentication, image upload, and PDF generation APIs.
+                Learning real-world workflows: Git/GitHub collaboration,
+                debugging, and API integration.
               </li>
               <li>
-                Working with cloud DBs like Neon and PlanetScale, deployed on
-                Vercel & Render.
+                Supporting database tasks (SQLite, Neon, PlanetScale) and cloud
+                deployments.
+              </li>
+              <li>
+                Gaining professional team experience while improving
+                problem-solving and development speed.
               </li>
             </p>
           </div>
@@ -169,16 +160,22 @@ const Resume = () => {
         <div className=" p-5 rounded-2xl bg-gradient-to-br from-[#000000] via-[#1b1b1b] to-[#101420] flex flex-col gap-2 ">
           <div>
             <h3 className="text-[20px] font-medium pb-2">Frontend</h3>
-            <p className="bg-[#252525] rounded-2xl w-full py-2 relative ">
-              <p className="bg-[#6e6e6e] rounded-2xl max-w-[90%] w-full  py-2 absolute top-0 bottom-0  "></p>
-            </p>
+            <div className="flex justify-between gap-4 items-center ">
+              <p className="bg-[#252525] rounded-2xl w-full py-2 relative ">
+                <p className="bg-[#6e6e6e] rounded-2xl max-w-[85%] w-full  py-2 absolute top-0 bottom-0  "></p>
+              </p>
+              <p>85%</p>
+            </div>
           </div>
 
           <div>
             <h3 className="text-[20px] font-medium pb-2">Backend</h3>
-            <p className="bg-[#252525] rounded-2xl w-full py-2 relative ">
-              <p className="bg-[#6e6e6e] rounded-2xl max-w-[75%] w-full  py-2 absolute top-0 bottom-0  "></p>
-            </p>
+            <div className="flex justify-between gap-4 items-center ">
+              <p className="bg-[#252525] rounded-2xl w-full py-2 relative ">
+                <p className="bg-[#6e6e6e] rounded-2xl max-w-[75%] w-full  py-2 absolute top-0 bottom-0  "></p>
+              </p>
+              <p>70%</p>
+            </div>
           </div>
 
           <div>
@@ -186,9 +183,12 @@ const Resume = () => {
               {" "}
               Databases & Storage
             </h3>
-            <p className="bg-[#252525] rounded-2xl w-full py-2 relative ">
-              <p className="bg-[#6e6e6e] rounded-2xl max-w-[85%] w-full  py-2 absolute top-0 bottom-0  "></p>
-            </p>
+            <div className="flex justify-between gap-4 items-center ">
+              <p className="bg-[#252525] rounded-2xl w-full py-2 relative ">
+                <p className="bg-[#6e6e6e] rounded-2xl max-w-[82%] w-full  py-2 absolute top-0 bottom-0  "></p>
+              </p>
+              <p>82%</p>
+            </div>
           </div>
 
           <div>
@@ -196,27 +196,36 @@ const Resume = () => {
               {" "}
               Mobile App Development
             </h3>
-            <p className="bg-[#252525] rounded-2xl w-full py-2 relative ">
-              <p className="bg-[#6e6e6e] rounded-2xl max-w-[35%] w-full  py-2 absolute top-0 bottom-0  "></p>
-            </p>
+            <div className="flex justify-between gap-4 items-center ">
+              <p className="bg-[#252525] rounded-2xl w-full py-2 relative ">
+                <p className="bg-[#6e6e6e] rounded-2xl max-w-[30%] w-full  py-2 absolute top-0 bottom-0  "></p>
+              </p>
+              <p>30%</p>
+            </div>
           </div>
 
           <div>
             <h3 className="text-[20px] font-medium pb-2">
               Hosting & Deployment
             </h3>
-            <p className="bg-[#252525] rounded-2xl w-full py-2 relative ">
-              <p className="bg-[#6e6e6e] rounded-2xl max-w-[75%] w-full  py-2 absolute top-0 bottom-0  "></p>
-            </p>
+            <div className="flex justify-between gap-4 items-center ">
+              <p className="bg-[#252525] rounded-2xl w-full py-2 relative ">
+                <p className="bg-[#6e6e6e] rounded-2xl max-w-[70%] w-full  py-2 absolute top-0 bottom-0  "></p>
+              </p>
+              <p>70%</p>
+            </div>
           </div>
 
           <div>
             <h3 className="text-[20px] font-medium pb-2">
               Dev Tools & Utilities
             </h3>
-            <p className="bg-[#252525] rounded-2xl w-full py-2 relative ">
-              <p className="bg-[#6e6e6e] rounded-2xl max-w-[90%] w-full  py-2 absolute top-0 bottom-0  "></p>
-            </p>
+            <div className="flex justify-between gap-4 items-center ">
+              <p className="bg-[#252525] rounded-2xl w-full py-2 relative ">
+                <p className="bg-[#6e6e6e] rounded-2xl max-w-[80%] w-full  py-2 absolute top-0 bottom-0  "></p>
+              </p>
+              <p>80%</p>
+            </div>
           </div>
         </div>
       </div>
