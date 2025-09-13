@@ -145,7 +145,7 @@ const Resume = () => {
           </p>
           <div>
             <p className="text-[16px] font-medium px-3 pb-2">
-              StackHive Technologies – Remote (UK 🇬🇧)
+              Click-hub Remote (Awka)
             </p>
             <p className="px-4 flex flex-col gap-3 ">
               <li>

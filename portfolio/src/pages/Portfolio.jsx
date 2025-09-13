@@ -4,8 +4,8 @@ import img2 from "../assets/Screenshot (24).png";
 import img1 from "../assets/Screenshot (25).png";
 import img3 from "../assets/Screenshot (26).png";
 import img4 from "../assets/Screenshot (28).png";
-import img5 from "../assets/Screenshot (29).png"
-
+import img5 from "../assets/Screenshot (29).png";
+import img6 from "../assets/waitlist.png"
 
 const Portfolio = () => {
   return (
@@ -86,7 +86,7 @@ const Portfolio = () => {
           </div>
         </div>
 
-         <div className=" w-full border border-white  rounded-lg ">
+        <div className=" w-full border border-white  rounded-lg ">
           <img src={img5} alt="" className="w-full rounded-t-lg " />
           <div className="py-1 flex justify-center items-center ">
             <a
@@ -100,11 +100,37 @@ const Portfolio = () => {
             </a>
           </div>
           <div className="flex justify-center items-center">
-            <p className="flex items-center  gap-3 text-yellow-400 "><span><AlertTriangle /></span> <span>Still under development</span></p>
+            <p className="flex items-center  gap-3 text-yellow-400 ">
+              <span>
+                <AlertTriangle />
+              </span>{" "}
+              <span>Still under development</span>
+            </p>
           </div>
-           
         </div>
-        
+
+        <div className=" w-full border border-white  rounded-lg ">
+          <img src={img6} alt="" className="w-full rounded-t-lg " />
+          <div className="py-1 flex justify-center items-center ">
+            <a
+              href="https://join.ecocruise.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#444444] px-4 py-1 rounded-full flex items-center gap-1 hover:bg-transparent border-2 border-[#444444] duration-500 transition-all"
+            >
+              <span>View live Demo</span>
+              <ArrowUpRight />
+            </a>
+          </div>
+          <div className="flex justify-center items-center">
+            <p className="flex items-center  gap-3 text-yellow-400 ">
+              <span>
+                <AlertTriangle />
+              </span>{" "}
+              <span>Still under development</span>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
