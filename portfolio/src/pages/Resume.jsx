@@ -114,12 +114,12 @@ const Resume = () => {
           <p className="flex  gap-1 py-2">
             <span className=" translate-y-2 flex-shrink-0 w-[16px] h-[16px] rounded-full bg-gradient-to-br from-[#000000] via-[#1b1b1b] to-[#101420]  "></span>
             <span className="font-semibold text-[19px] ">
-              Full Stack Developer — Dec 2024 → March 2025
+              Junior Stack Developer — Dec 2024 → March 2025
             </span>
           </p>
           <div>
             <p className="text-[16px] font-medium px-3 pb-2">
-              DevSphere Innovations – Port Harcourt, Nigeria (Hybrid)
+              DevSphere Innovations – Port Harcourt, Nigeria (Remote)
             </p>
             <p className="px-4 flex flex-col gap-3 max-w-[600px] ">
               <li>
@@ -140,7 +140,7 @@ const Resume = () => {
           <p className="flex  gap-1 py-2">
             <span className=" translate-y-2 flex-shrink-0 w-[16px] h-[16px] rounded-full bg-gradient-to-br from-[#000000] via-[#1b1b1b] to-[#101420]  "></span>
             <span className="font-semibold text-[19px] ">
-              Full Stack Engineer — April 2025 → Present
+              Junior Full Stack Developer — April 2025 → Present
             </span>
           </p>
           <div>
