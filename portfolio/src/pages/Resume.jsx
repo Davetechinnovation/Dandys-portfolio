@@ -118,6 +118,11 @@ const Resume = () => {
                 Transport System App: A logistics/transport booking system with
                 Node.js + Express.js backend and SQLite database
               </li>
+              <li>
+                Several Websites: Designed and developed responsive websites for
+                personal and client use, focusing on clean UI, accessibility,
+                and SEO best practices.
+              </li>
             </p>
           </div>
         </div>
