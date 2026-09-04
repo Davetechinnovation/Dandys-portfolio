@@ -19,9 +19,9 @@ export function WorkPageClient({ projects }: { projects: Project[] }) {
         );
 
   return (
-    <main className="md:ml-16">
+    <main className="pt-20 md:pt-0 md:ml-16">
       {/* Header */}
-      <div className="sticky top-0 md:static md:pt-8 bg-background/80 md:bg-transparent backdrop-blur md:backdrop-blur-none z-40 border-b md:border-b-0 border-border">
+      <div className="sticky top-16 md:static md:pt-8 bg-background/80 md:bg-transparent backdrop-blur md:backdrop-blur-none z-40 border-b md:border-b-0 border-border">
         <div className="max-w-7xl mx-auto px-8 md:px-16 py-6 md:py-0">
           <p className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
             01 // PROJECT ARCHIVE

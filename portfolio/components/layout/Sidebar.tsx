@@ -71,7 +71,7 @@ export function Sidebar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <nav className="md:hidden fixed top-16 left-0 right-0 bg-background border-b border-border z-40">
+        <nav className="md:hidden fixed top-16 left-0 right-0 bg-background border-b border-border z-50">
           {navItems.map((item) => (
             <Link
               key={item.href}
