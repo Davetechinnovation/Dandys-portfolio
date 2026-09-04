@@ -7,7 +7,7 @@ import { profile, skills } from "@/lib/data";
 export const metadata: Metadata = {
   title: "About Udoka Dandave (Dandy) — Software Engineer",
   description:
-    "Who is Udoka Dandave? Full stack software engineer (aka Dandy) from Enugu, Nigeria — React, Next.js, Node.js and Laravel. 4+ years building for fintech, streaming and B2B.",
+    "Who is Udoka Dandave? Full stack engineer (aka Dandy) from Enugu, Nigeria. React, Next.js, Node.js and Laravel — 4+ years shipping real products.",
   alternates: { canonical: "/about" },
 };
 

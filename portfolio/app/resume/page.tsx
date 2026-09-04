@@ -7,7 +7,7 @@ import { experience, education, profile } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Resume — Udoka Dandave, Software Engineer",
   description:
-    "The resume of Udoka Dandave (Dandy): full stack software engineer with 4+ years across fintech, B2B automation and enterprise systems. Experience, education and skills.",
+    "Resume of Udoka Dandave (Dandy) — software engineer with 4+ years across fintech, B2B automation and enterprise systems.",
   alternates: { canonical: "/resume" },
 };
 

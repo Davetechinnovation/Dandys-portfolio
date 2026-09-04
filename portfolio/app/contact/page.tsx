@@ -7,7 +7,7 @@ import { profile } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Contact — Hire Udoka Dandave, Web Developer",
   description:
-    "Hire Udoka Dandave (Dandy): full stack software engineer available for freelance, contracts and full-time remote roles. Response within 24 hours — hello@dandaveudoka.com.ng.",
+    "Hire Udoka Dandave (Dandy) — full stack engineer for freelance, contracts and remote roles. Replies within 24 hours.",
   alternates: { canonical: "/contact" },
 };
 

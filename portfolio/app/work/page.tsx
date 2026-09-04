@@ -7,7 +7,7 @@ import { projects } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Projects & Work — Udoka Dandave, Web Developer",
   description:
-    "Selected projects by Udoka Dandave (Dandy): fintech, streaming, B2B automation and operations platforms built with React, Next.js, Node.js, Laravel and React Native.",
+    "Projects by Udoka Dandave (Dandy): fintech, streaming and B2B platforms built with React, Next.js, Node.js, Laravel and React Native.",
   alternates: { canonical: "/work" },
 };
 

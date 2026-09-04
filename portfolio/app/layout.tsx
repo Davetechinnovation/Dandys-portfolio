@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s | Udoka Dandave — Software Engineer",
   },
   description:
-    "Udoka Dandave (Dandy) — full stack software engineer and web developer in Enugu, Nigeria. React, Next.js, Node.js, Laravel and React Native. View projects and get in touch.",
+    "Udoka Dandave (Dandy) — full stack software engineer and web developer in Enugu, Nigeria. React, Next.js, Node.js, Laravel, React Native.",
   keywords: [
     // Name variations people actually search
     "Udoka Dandave",
