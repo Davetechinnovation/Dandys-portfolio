@@ -158,7 +158,7 @@ export default function RootLayout({
                   "@type": "ProfilePage",
                   "@id": `${siteUrl}/#profilepage`,
                   url: siteUrl,
-                  about: { "@id": `${siteUrl}/#person` },
+                  mainEntity: { "@id": `${siteUrl}/#person` },
                 },
               ],
             }),
