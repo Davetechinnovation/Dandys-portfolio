@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: "Udoka Dandave (Dandy) — Full Stack Software Engineer",
-    template: "%s | Udoka Dandave — Software Engineer",
+    template: "%s | Udoka Dandave",
   },
   description:
     "Udoka Dandave (Dandy) — full stack software engineer and web developer in Enugu, Nigeria. React, Next.js, Node.js, Laravel, React Native.",
