@@ -17,6 +17,7 @@ export const profile = {
   summary:
     "Results-driven Software Engineer with 4+ years of hands-on experience building scalable web applications and multi-platform systems — responsive, high-performance frontends (React, Next.js, React Native), robust backends (Node.js, Laravel/PHP), and containerized deployments (Docker). Delivered real-world products across fintech, streaming, B2B automation, and enterprise dashboards.",
   longBio: [
+    "I'm Udoka Dandave Chibuzor — most people call me Dandy. The Dandave comes from Daniel David, so if you know me as Daniel Udoka or David Udoka, same person, same engineer.",
     "I specialize in bridging high-performance frontends and robust backend systems — React, Next.js and React Native on one side, Node.js and Laravel on the other, with Docker-based deployments tying it together.",
     "I started coding at 16 and have since shipped real products across fintech, streaming, B2B automation and enterprise dashboards — owning features end to end, from architecture to production, with strong code review, debugging and testing habits.",
   ],

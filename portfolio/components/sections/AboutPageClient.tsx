@@ -27,7 +27,7 @@ export function AboutPageClient({
               <div className="w-full h-full relative overflow-hidden">
                 <Image
                   src={profile.photo}
-                  alt="Udoka Dandave"
+                  alt="Udoka Dandave Chibuzor — software engineer"
                   fill
                   sizes="128px"
                   className="object-cover"

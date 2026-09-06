@@ -2,7 +2,7 @@
 
 My personal portfolio site: **[dandaveudoka.com.ng](https://dandaveudoka.com.ng)**
 
-Full stack software engineer (aka **Dandy**) based in Enugu, Nigeria — building web apps, mobile apps, and robust backend systems with React, Next.js, Node.js, Laravel, and React Native.
+Full stack software engineer (aka **Dandy**) based in Enugu, Nigeria — full name **Udoka Dandave Chibuzor** (the Dandave comes from Daniel David). Building web apps, mobile apps, and robust backend systems with React, Next.js, Node.js, Laravel, and React Native.
 
 ## Pages
 
