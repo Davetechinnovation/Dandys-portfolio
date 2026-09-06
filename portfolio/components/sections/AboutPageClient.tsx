@@ -23,7 +23,7 @@ export function AboutPageClient({
             Building seamless<br />digital experiences<br />across platforms.
           </h1>
           <div className="flex flex-col sm:flex-row gap-10 items-start">
-            <div className="w-32 h-32 border border-border p-2 flex-shrink-0 hidden sm:block">
+            <div className="w-32 h-32 border border-border p-2 shrink-0 hidden sm:block">
               <div className="w-full h-full relative overflow-hidden">
                 <Image
                   src={profile.photo}
