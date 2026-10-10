@@ -1,11 +1,11 @@
 export const profile = {
   name: "Udoka Dandave",
   alias: "Dandy",
-  role: "Software Engineer — Full Stack",
+  role: "Software Engineer, Full Stack",
   email: "hello@dandaveudoka.com.ng",
   phone: "+234 810 339 3608",
   phoneHref: "+2348103393608",
-  location: "Enugu, Nigeria — Remote worldwide",
+  location: "Enugu, Nigeria. Remote worldwide",
   whatsapp:
     "https://api.whatsapp.com/send?phone=2348103393608&text=Hello%20Dandy%2C%20I%20got%20your%20contact%20from%20your%20portfolio%20and%20would%20like%20to%20connect.",
   github: "https://github.com/Davetechinnovation",
@@ -15,11 +15,11 @@ export const profile = {
   cv: "/Udoka_Dandave_CV.pdf",
   photo: "/profile-v2.jpg",
   summary:
-    "Results-driven Software Engineer with 4+ years of hands-on experience building scalable web applications and multi-platform systems — responsive, high-performance frontends (React, Next.js, React Native), robust backends (Node.js, Laravel/PHP), and containerized deployments (Docker). Delivered real-world products across fintech, streaming, B2B automation, and enterprise dashboards.",
+    "Full-stack software engineer with four years shipping real products across fintech, streaming, B2B automation and enterprise dashboards. React, Next.js and React Native up front; Node.js and Laravel behind; Docker underneath.",
   longBio: [
-    "I'm Udoka Dandave Chibuzor — most people call me Dandy. The Dandave comes from Daniel David, so if you know me as Daniel Udoka or David Udoka, same person, same engineer.",
-    "I specialize in bridging high-performance frontends and robust backend systems — React, Next.js and React Native on one side, Node.js and Laravel on the other, with Docker-based deployments tying it together.",
-    "I started coding at 16 and have since shipped real products across fintech, streaming, B2B automation and enterprise dashboards — owning features end to end, from architecture to production, with strong code review, debugging and testing habits.",
+    "I'm Udoka Dandave Chibuzor. Most people call me Dandy. The Dandave comes from Daniel David, so if you know me as Daniel Udoka or David Udoka, same person, same engineer.",
+    "I specialize in bridging high-performance frontends and robust backend systems: React, Next.js and React Native on one side, Node.js and Laravel on the other, with Docker-based deployments tying it together.",
+    "I started coding at 16 and have since shipped real products across fintech, streaming, B2B automation and enterprise dashboards, owning features end to end, from architecture to production, with strong code review, debugging and testing habits.",
   ],
 };
 
@@ -45,7 +45,7 @@ export const projects: Project[] = [
     title: "Jointearn Crypto App",
     description:
       "Cross-platform mobile crypto application for asset management and investments. Secure Laravel REST API handling wallets, transactions and authentication; React Native UI holding a 60 FPS baseline on iOS and Android. 99.9% uptime under concurrent-user load testing.",
-    tags: ["REACT NATIVE", "LARAVEL", "FINTECH"],
+    tags: ["React Native", "Laravel", "Fintech"],
     links: [],
     featured: true,
   },
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     title: "Solvativ",
     description:
       "Multi-platform B2B ecosystem automating omni-channel messaging across WhatsApp, Instagram, Facebook and TikTok. Cut automated customer response times from hours to under 60 seconds. I own the full stack: architecture, API design, database schema, deployment.",
-    tags: ["B2B SAAS", "AUTOMATION", "FOUNDER"],
+    tags: ["B2B SaaS", "Automation", "Founder"],
     links: [],
     featured: true,
   },
@@ -62,17 +62,17 @@ export const projects: Project[] = [
     slug: "danraph-transport",
     title: "DanRaph Transport System",
     description:
-      "Commissioned operations platform for a transport & logistics company — booking, sales tracking, driver and fleet monitoring, and reporting consolidated into one interface. Full stack React + REST APIs with MySQL/MongoDB, built for query performance.",
-    tags: ["REACT", "NODE.JS", "MYSQL", "MONGODB"],
+      "Commissioned operations platform for a transport & logistics company: booking, sales tracking, driver and fleet monitoring, and reporting consolidated into one interface. Full stack React + REST APIs with MySQL/MongoDB, built for query performance.",
+    tags: ["React", "Node.js", "MySQL", "MongoDB"],
     image: "/projects/danraph-transport.png",
     links: [
-      { label: "MAIN APP", href: "https://danraph-transport.vercel.app/" },
+      { label: "Main app", href: "https://danraph-transport.vercel.app/" },
       {
-        label: "ADMIN DASHBOARD",
+        label: "Admin dashboard",
         href: "https://danraph-transport-admin.vercel.app/admin/dashboard",
       },
       {
-        label: "DRIVER DASHBOARD",
+        label: "Driver dashboard",
         href: "https://danraph-services-drivers.vercel.app/drivers/dashboard",
       },
     ],
@@ -82,29 +82,29 @@ export const projects: Project[] = [
     slug: "dandy-prime",
     title: "DandyPrime TV",
     description:
-      "Video streaming web application with Next.js and Node.js — playback performance, content cataloging, and responsive UI across devices. Integrates APIs for movies, TV shows and sports.",
-    tags: ["NEXT.JS", "NODE.JS", "STREAMING"],
+      "Video streaming web application with Next.js and Node.js: playback performance, content cataloging, and responsive UI across devices. Integrates APIs for movies, TV shows and sports.",
+    tags: ["Next.js", "Node.js", "Streaming"],
     image: "/projects/dandy-prime.png",
-    links: [{ label: "LIVE DEMO", href: "https://dandy-prime-tv02.vercel.app/" }],
+    links: [{ label: "Live demo", href: "https://dandy-prime-tv02.vercel.app/" }],
     status: "IN DEVELOPMENT",
   },
   {
     slug: "danraph-services",
     title: "DanRaph Services",
     description:
-      "Company website for DanRaph Integrated Services — clean UI, accessibility and SEO best practices, deployed on Vercel.",
-    tags: ["REACT", "TAILWIND", "VERCEL"],
+      "Company website for DanRaph Integrated Services: clean UI, accessibility and SEO best practices, deployed on Vercel.",
+    tags: ["React", "Tailwind", "Vercel"],
     image: "/projects/danraph-services.png",
-    links: [{ label: "LIVE SITE", href: "https://danraphservices.vercel.app/" }],
+    links: [{ label: "Live site", href: "https://danraphservices.vercel.app/" }],
   },
   {
     slug: "ecocruise",
     title: "EcoCruise Waitlist",
     description:
-      "Launch waitlist page for EcoCruise — fast, focused, conversion-oriented single-purpose build.",
-    tags: ["LANDING", "WAITLIST", "LAUNCH"],
+      "Launch waitlist page for EcoCruise: fast, focused, conversion-oriented single-purpose build.",
+    tags: ["Landing", "Waitlist", "Launch"],
     image: "/projects/ecocruise.png",
-    links: [{ label: "LIVE SITE", href: "https://join.ecocruise.org/" }],
+    links: [{ label: "Live site", href: "https://join.ecocruise.org/" }],
   },
 ];
 
@@ -138,7 +138,7 @@ export const testimonials: Testimonial[] = [
     role: "Creative Agency Lead",
     date: "4 January 2025",
     quote:
-      "From the first meeting to final launch, Dandy understood our goals and exceeded expectations. The frontend is clean, fast, and responsive — just what we needed. His backend integration was equally impressive.",
+      "From the first meeting to final launch, Dandy understood our goals and exceeded expectations. The frontend is clean, fast, and responsive. Just what we needed. His backend integration was equally impressive.",
     photo: "/testimonials/Tdandy-tol.jpg",
   },
   {
@@ -154,7 +154,7 @@ export const testimonials: Testimonial[] = [
     role: "Product Manager",
     date: "12 March 2025",
     quote:
-      "Dandy's work ethic and talent are unmatched. He communicated clearly, met every milestone, and delivered a product we're proud of. He's not just a developer — he's a partner in your success.",
+      "Dandy's work ethic and talent are unmatched. He communicated clearly, met every milestone, and delivered a product we're proud of. He's not just a developer. He's a partner in your success.",
     photo: "/testimonials/dandy-samuel.jpg",
   },
   {
@@ -162,7 +162,7 @@ export const testimonials: Testimonial[] = [
     role: "Product Manager, TechNova Solutions",
     date: "31 March 2025",
     quote:
-      "Dandy turned our scattered ideas into a sleek, responsive app with precision and creativity. His design sense, clear communication, and technical skill are rare — a standout developer I'd work with again in a heartbeat.",
+      "Dandy turned our scattered ideas into a sleek, responsive app with precision and creativity. His design sense, clear communication, and technical skill are rare. A standout developer I'd work with again in a heartbeat.",
     photo: "/testimonials/dandy-amada.jpg",
   },
 ];
@@ -180,7 +180,7 @@ export const experience: Experience[] = [
   {
     role: "Software Developer (Contract)",
     company: "Jointearn",
-    period: "JAN 2026 — PRESENT",
+    period: "Jan 2026 - present",
     location: "Nigeria (Remote)",
     current: true,
     points: [
@@ -193,7 +193,7 @@ export const experience: Experience[] = [
   {
     role: "Founder & Software Engineer",
     company: "Solvativ",
-    period: "JUN 2026 — PRESENT",
+    period: "Jun 2026 - present",
     location: "Nigeria (Remote)",
     current: true,
     points: [
@@ -205,7 +205,7 @@ export const experience: Experience[] = [
   {
     role: "Admin/ICT Manager (Part-time)",
     company: "DanRaph Integrated Services",
-    period: "SEP 2025 — PRESENT",
+    period: "Sep 2025 - present",
     location: "Nigeria",
     current: true,
     points: [
@@ -217,7 +217,7 @@ export const experience: Experience[] = [
   {
     role: "Freelance Software Developer",
     company: "Transport & Logistics Company",
-    period: "2024 — 2025",
+    period: "2024 - 2025",
     location: "Nigeria (Remote)",
     points: [
       "Delivered a commissioned operations dashboard consolidating sales tracking, driver and fleet monitoring, and reporting into a single interface.",
@@ -238,12 +238,12 @@ export const education: Education[] = [
   {
     title: "Full Stack Web Development Certificate",
     institution: "Tech Academy",
-    period: "2022 — 2024",
+    period: "2022 - 2024",
     detail:
       "Structured full-stack programme covering React, Node.js, databases, APIs and deployment practices. Anambra, Nigeria.",
   },
   {
-    title: "WASSCE — West African Senior School Certificate",
+    title: "WASSCE, West African Senior School Certificate",
     institution: "PineCrest College",
     period: "2024",
     detail: "Nigeria.",
@@ -252,7 +252,7 @@ export const education: Education[] = [
 
 export const skills = [
   {
-    category: "FRONTEND",
+    category: "Frontend",
     items: [
       "React.js",
       "Next.js",
@@ -264,15 +264,15 @@ export const skills = [
     ],
   },
   {
-    category: "BACKEND",
+    category: "Backend",
     items: ["Node.js", "Express.js", "PHP", "Laravel", "REST APIs"],
   },
   {
-    category: "DATABASES",
+    category: "Databases",
     items: ["MySQL", "MongoDB", "SQLite"],
   },
   {
-    category: "TOOLS & PRACTICES",
+    category: "Tools & Practices",
     items: [
       "Git/GitHub",
       "Docker",

@@ -2,34 +2,35 @@
 
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 import type { Testimonial } from "@/lib/data";
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <article className="border border-border bg-card/30 p-6 w-[320px] sm:w-[380px] flex-shrink-0 flex flex-col">
-      <div className="flex items-center gap-4 mb-4">
-        <div className="w-12 h-12 rounded-full overflow-hidden relative border border-border flex-shrink-0">
+    <figure className="flex w-[320px] flex-shrink-0 flex-col sm:w-[400px]">
+      <blockquote className="flex-1 text-[1.1rem] italic leading-relaxed">
+        <span className="font-display not-italic text-blue">&ldquo;</span>
+        {testimonial.quote}
+        <span className="font-display not-italic text-blue">&rdquo;</span>
+      </blockquote>
+      <figcaption className="mt-5 flex items-center gap-3.5">
+        <span className="relative h-11 w-11 flex-shrink-0 overflow-hidden rounded-full border border-hair">
           <Image
             src={testimonial.photo}
             alt={testimonial.name}
             fill
-            sizes="48px"
+            sizes="44px"
             className="object-cover"
           />
-        </div>
-        <div>
-          <p className="text-sm font-bold">{testimonial.name}</p>
-          <p className="text-xs text-muted-foreground">{testimonial.role}</p>
-        </div>
-      </div>
-      <p className="text-sm text-muted-foreground leading-relaxed italic flex-1">
-        &ldquo;{testimonial.quote}&rdquo;
-      </p>
-      <p className="text-xs uppercase tracking-widest text-muted-foreground mt-4">
-        {testimonial.date}
-      </p>
-    </article>
+        </span>
+        <span className="text-[15px]">
+          {testimonial.name}
+          <span className="block text-[13.5px] text-dim">
+            {testimonial.role}
+          </span>
+        </span>
+      </figcaption>
+    </figure>
   );
 }
 
@@ -43,7 +44,7 @@ export function TestimonialsSection({ items }: { items: Testimonial[] }) {
     if (!container) return;
     setCanScrollLeft(container.scrollLeft > 5);
     setCanScrollRight(
-      container.scrollLeft + container.offsetWidth < container.scrollWidth - 5
+      container.scrollLeft + container.offsetWidth < container.scrollWidth - 5,
     );
   };
 
@@ -51,7 +52,7 @@ export function TestimonialsSection({ items }: { items: Testimonial[] }) {
     const container = scrollRef.current;
     if (!container) return;
     updateScroll();
-    container.addEventListener("scroll", updateScroll);
+    container.addEventListener("scroll", updateScroll, { passive: true });
     window.addEventListener("resize", updateScroll);
     return () => {
       container.removeEventListener("scroll", updateScroll);
@@ -69,31 +70,31 @@ export function TestimonialsSection({ items }: { items: Testimonial[] }) {
 
   return (
     <div className="relative">
-      {canScrollLeft && (
-        <button
-          onClick={() => scrollBy(-1)}
-          className="absolute -left-3 top-1/2 -translate-y-1/2 z-20 bg-background border border-border p-2 hover:bg-card transition-colors"
-          aria-label="Scroll testimonials left"
-        >
-          <ChevronLeft size={20} />
-        </button>
-      )}
-      {canScrollRight && (
-        <button
-          onClick={() => scrollBy(1)}
-          className="absolute -right-3 top-1/2 -translate-y-1/2 z-20 bg-background border border-border p-2 hover:bg-card transition-colors"
-          aria-label="Scroll testimonials right"
-        >
-          <ChevronRight size={20} />
-        </button>
-      )}
       <div
         ref={scrollRef}
-        className="flex flex-nowrap gap-5 overflow-x-auto scrollbar-thin py-2"
+        className="scrollbar-thin flex flex-nowrap gap-10 overflow-x-auto py-2"
       >
         {items.map((testimonial) => (
           <TestimonialCard key={testimonial.name} testimonial={testimonial} />
         ))}
+      </div>
+      <div className="mt-8 flex gap-2">
+        <button
+          onClick={() => scrollBy(-1)}
+          disabled={!canScrollLeft}
+          className="flex h-10 w-10 items-center justify-center rounded-[2px] border border-hair transition-colors hover:border-blue hover:text-blue disabled:opacity-30 disabled:hover:border-hair disabled:hover:text-inherit"
+          aria-label="Previous testimonials"
+        >
+          <CaretLeft size={16} weight="bold" />
+        </button>
+        <button
+          onClick={() => scrollBy(1)}
+          disabled={!canScrollRight}
+          className="flex h-10 w-10 items-center justify-center rounded-[2px] border border-hair transition-colors hover:border-blue hover:text-blue disabled:opacity-30 disabled:hover:border-hair disabled:hover:text-inherit"
+          aria-label="Next testimonials"
+        >
+          <CaretRight size={16} weight="bold" />
+        </button>
       </div>
     </div>
   );

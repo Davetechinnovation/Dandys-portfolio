@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Bricolage_Grotesque, Newsreader } from "next/font/google";
 import "./globals.css";
 import { profile } from "@/lib/data";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const spaceGrotesk = Space_Grotesk({
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-display",
+  axes: ["opsz", "wdth"],
+});
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  variable: "--font-body",
 });
 
 const siteUrl = "https://dandaveudoka.com.ng";
@@ -98,8 +104,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="font-sans antialiased bg-background text-foreground">
+    <html lang="en" className={`${bricolage.variable} ${newsreader.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('dandy-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='light';}})();`,
+          }}
+        />
+      </head>
+      <body className="antialiased">
         {children}
         <script
           type="application/ld+json"

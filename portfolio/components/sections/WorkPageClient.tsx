@@ -4,69 +4,63 @@ import { useState } from "react";
 import { ProjectCard } from "@/components/common/ProjectCard";
 import type { Project } from "@/lib/data";
 
-const allFilters = ["ALL", "FINTECH", "SAAS", "STREAMING", "WEB"];
+const allFilters = ["All", "Fintech", "SaaS", "Streaming", "Web"];
 
 export function WorkPageClient({ projects }: { projects: Project[] }) {
-  const [filter, setFilter] = useState("ALL");
+  const [filter, setFilter] = useState("All");
 
   const filtered =
-    filter === "ALL"
+    filter === "All"
       ? projects
       : projects.filter((p) =>
           p.tags.some((tag) =>
-            tag.toLowerCase().includes(filter.toLowerCase())
-          )
+            tag.toLowerCase().includes(filter.toLowerCase()),
+          ),
         );
 
   return (
-    <main className="pt-20 md:pt-0 md:ml-16">
-      {/* Header */}
-      <div className="sticky top-16 md:static md:pt-8 bg-background/80 md:bg-transparent backdrop-blur md:backdrop-blur-none z-40 border-b md:border-b-0 border-border">
-        <div className="max-w-7xl mx-auto px-8 md:px-16 py-6 md:py-0">
-          <p className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
-            01 // PROJECT ARCHIVE
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">SELECTED WORK</h1>
-          <p className="text-muted-foreground mb-6 max-w-2xl">
-            Real products shipped across fintech, streaming, B2B automation and
-            enterprise operations. Emphasizing precision, performance, and
-            purpose.
-          </p>
+    <main className="md:ml-14">
+      <div className="mx-auto max-w-[72rem] px-6 pb-24 pt-28 md:px-16 md:pt-24">
+        <p className="mb-5 font-display text-xs font-medium tracking-[0.06em] text-dim">
+          Project archive
+        </p>
+        <h1 className="max-w-[14ch] text-[clamp(2.6rem,7vw,5.5rem)]">
+          Real products, <span className="text-blue">shipped.</span>
+        </h1>
+        <p className="mt-8 max-w-[34rem]">
+          Fintech, streaming, B2B automation and enterprise operations. Every
+          entry here ran in production, not on a laptop.
+        </p>
 
-          {/* Filters */}
-          <div className="flex gap-4 flex-wrap pb-6 md:pb-0">
-            {allFilters.map((f) => (
-              <button
-                key={f}
-                onClick={() => setFilter(f)}
-                className={`text-xs px-4 py-2 uppercase tracking-widest transition-all ${
-                  filter === f
-                    ? "bg-foreground text-background"
-                    : "border border-border text-foreground hover:bg-card/30"
-                }`}
-              >
-                {f}
-              </button>
-            ))}
-          </div>
+        {/* Filters: understated text buttons, not chips */}
+        <div className="mt-10 flex flex-wrap gap-x-6 gap-y-2 border-b border-hair pb-5">
+          {allFilters.map((f) => (
+            <button
+              key={f}
+              onClick={() => setFilter(f)}
+              className={`font-display text-[14.5px] transition-colors ${
+                filter === f
+                  ? "font-semibold text-blue underline decoration-blue underline-offset-8"
+                  : "text-dim hover:text-ink"
+              }`}
+            >
+              {f}
+            </button>
+          ))}
         </div>
-      </div>
 
-      {/* Projects Grid */}
-      <section className="py-12 md:py-20">
-        <div className="max-w-7xl mx-auto px-8 md:px-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {filtered.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
-            ))}
-          </div>
+        {/* Projects: editorial rows with images */}
+        <section className="pt-4">
+          {filtered.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
           {filtered.length === 0 && (
-            <p className="text-muted-foreground text-sm uppercase tracking-widest">
-              NO PROJECTS IN THIS CATEGORY YET.
+            <p className="py-10 text-dim">
+              Nothing in this category yet. Check the others.
             </p>
           )}
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
   );
 }

@@ -5,12 +5,7 @@ import type { profile as profileType } from "@/lib/data";
 
 type Profile = typeof profileType;
 
-const projectTypes = [
-  "FULL STACK DEV",
-  "MOBILE APP",
-  "SYSTEM ARCHITECTURE",
-  "OTHER",
-];
+const projectTypes = ["Full stack dev", "Mobile app", "System architecture", "Other"];
 
 export function ContactPageClient({ profile }: { profile: Profile }) {
   const [name, setName] = useState("");
@@ -25,7 +20,7 @@ export function ContactPageClient({ profile }: { profile: Profile }) {
 
   const toggleType = (t: string) => {
     setTypes((prev) =>
-      prev.includes(t) ? prev.filter((p) => p !== t) : [...prev, t]
+      prev.includes(t) ? prev.filter((p) => p !== t) : [...prev, t],
     );
   };
 
@@ -53,238 +48,218 @@ export function ContactPageClient({ profile }: { profile: Profile }) {
   };
 
   return (
-    <main className="md:ml-16">
-      <div className="min-h-screen flex items-center justify-center pt-20 md:pt-0">
-        <div className="max-w-7xl mx-auto px-8 md:px-16 py-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left Section */}
-          <div className="flex flex-col justify-center">
-            <p className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
-              01 // TRANSMISSION
-            </p>
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-8">
-              Let&apos;s build<br />something.
-            </h1>
-            <p className="text-muted-foreground mb-8 text-base leading-relaxed max-w-md">
-              Available for freelance engagements, contracts, and full-time
-              remote roles. Response time is typically within 24 hours.
-            </p>
+    <main className="md:ml-14">
+      <div className="mx-auto grid min-h-[100dvh] w-full max-w-[72rem] grid-cols-1 gap-14 px-6 pb-20 pt-28 md:grid-cols-2 md:px-16 md:pt-24">
+        {/* Left: invitation + direct lines */}
+        <div className="flex flex-col justify-center">
+          <p className="mb-5 font-display text-xs font-medium tracking-[0.06em] text-dim">
+            Contact
+          </p>
+          <h1 className="text-[clamp(2.6rem,7vw,5rem)]">
+            Let&apos;s build
+            <br />
+            <span className="text-blue">something.</span>
+          </h1>
+          <p className="mt-8 max-w-md">
+            Available for freelance engagements, contracts and full-time remote
+            roles. I reply within 24 hours, usually faster.
+          </p>
 
-            {/* Contact Info */}
-            <div className="space-y-6 mb-8">
-              <div>
-                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
-                  DIRECT LINE
-                </p>
-                <a
-                  href={`mailto:${profile.email}`}
-                  className="text-lg hover:opacity-70 transition-opacity"
-                >
-                  {profile.email}
-                </a>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
-                  PHONE
-                </p>
-                <a
-                  href={`tel:${profile.phoneHref}`}
-                  className="text-lg hover:opacity-70 transition-opacity"
-                >
-                  {profile.phone}
-                </a>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
-                  BASE OF OPERATIONS
-                </p>
-                <p className="text-lg">{profile.location}</p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
-                  FAST RESPONSE
-                </p>
-                <a
-                  href={profile.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-lg hover:opacity-70 transition-opacity"
-                >
-                  Chat on WhatsApp →
-                </a>
-              </div>
+          <div className="mt-10 space-y-6">
+            <div>
+              <p className="font-display text-[11px] font-semibold tracking-[0.05em] text-dim">
+                Direct
+              </p>
+              <a
+                href={`mailto:${profile.email}`}
+                className="text-lg hover:text-blue"
+              >
+                {profile.email}
+              </a>
             </div>
-
-            {/* Social Links */}
-            <div className="flex gap-8 text-sm uppercase tracking-widest flex-wrap">
-              <a
-                href={profile.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                GITHUB
+            <div>
+              <p className="font-display text-[11px] font-semibold tracking-[0.05em] text-dim">
+                Phone
+              </p>
+              <a href={`tel:${profile.phoneHref}`} className="text-lg hover:text-blue">
+                {profile.phone}
               </a>
+            </div>
+            <div>
+              <p className="font-display text-[11px] font-semibold tracking-[0.05em] text-dim">
+                Fastest
+              </p>
               <a
-                href={profile.linkedin}
+                href={profile.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="text-lg hover:text-blue"
               >
-                LINKEDIN
-              </a>
-              <a
-                href={profile.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                TWITTER / X
-              </a>
-              <a
-                href={profile.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                INSTAGRAM
+                Chat on WhatsApp
               </a>
             </div>
           </div>
 
-          {/* Right Section - Form */}
-          <div className="border border-border p-8 md:p-12">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name */}
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-xs uppercase tracking-widest text-muted-foreground mb-3"
-                >
-                  IDENTIFICATION
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Your name / company"
-                  className="w-full bg-background border-b border-border py-2 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground transition-colors"
-                />
-              </div>
+          <div className="mt-10 flex flex-wrap gap-x-7 gap-y-2 font-display text-[14.5px]">
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-dim hover:text-blue"
+            >
+              GitHub
+            </a>
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-dim hover:text-blue"
+            >
+              LinkedIn
+            </a>
+            <a
+              href={profile.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-dim hover:text-blue"
+            >
+              X
+            </a>
+            <a
+              href={profile.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-dim hover:text-blue"
+            >
+              Instagram
+            </a>
+          </div>
+        </div>
 
-              {/* Email */}
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-xs uppercase tracking-widest text-muted-foreground mb-3"
-                >
-                  RETURN ADDRESS
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="your@email.com"
-                  className="w-full bg-background border-b border-border py-2 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground transition-colors"
-                />
-              </div>
-
-              {/* Project Type */}
-              <div>
-                <label className="block text-xs uppercase tracking-widest text-muted-foreground mb-3">
-                  WHAT ARE WE BUILDING?
-                </label>
-                <div className="flex flex-wrap gap-3">
-                  {projectTypes.map((t) => (
-                    <label
-                      key={t}
-                      className="flex items-center gap-2 cursor-pointer"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={types.includes(t)}
-                        onChange={() => toggleType(t)}
-                        className="w-4 h-4 accent-white bg-background border border-border"
-                      />
-                      <span className="text-xs uppercase tracking-widest">
-                        {t}
-                      </span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Message */}
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-xs uppercase tracking-widest text-muted-foreground mb-3"
-                >
-                  TRANSMISSION DATA
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  placeholder="What are we building? Scope, timeline, budget — whatever you have."
-                  rows={6}
-                  className="w-full bg-background border border-border p-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground transition-colors resize-none"
-                />
-              </div>
-
-              {/* Honeypot — hidden from humans, catches spam bots */}
+        {/* Right: the form, hairline style */}
+        <div className="self-center">
+          <form onSubmit={handleSubmit} className="space-y-7">
+            <div>
+              <label
+                htmlFor="name"
+                className="mb-2 block font-display text-[11px] font-semibold tracking-[0.05em] text-dim"
+              >
+                Name
+              </label>
               <input
                 type="text"
-                name="website"
-                value={website}
-                onChange={(e) => setWebsite(e.target.value)}
-                tabIndex={-1}
-                autoComplete="off"
-                aria-hidden="true"
-                className="hidden"
+                id="name"
+                name="name"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Your name or company"
+                className="w-full border-b border-hair bg-transparent py-2.5 placeholder:text-dim/60 focus:border-blue focus:outline-none"
               />
+            </div>
 
-              {/* Submit */}
-              <div className="pt-4">
-                <button
-                  type="submit"
-                  disabled={status === "sending"}
-                  className="px-8 py-3 bg-foreground cursor-pointer text-background hover:opacity-90 transition-opacity font-semibold uppercase tracking-wider text-sm disabled:opacity-50"
-                >
-                  {status === "sending" ? "TRANSMITTING…" : "TRANSMIT ➜"}
-                </button>
+            <div>
+              <label
+                htmlFor="email"
+                className="mb-2 block font-display text-[11px] font-semibold tracking-[0.05em] text-dim"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@company.com"
+                className="w-full border-b border-hair bg-transparent py-2.5 placeholder:text-dim/60 focus:border-blue focus:outline-none"
+              />
+            </div>
 
-                {status === "success" && (
-                  <p className="text-sm text-foreground mt-3">
-                    ✓ Message sent — I&apos;ll get back to you within 24 hours.
-                  </p>
-                )}
-                {status === "error" && (
-                  <p className="text-sm mt-3">
-                    {error}{" "}
-                    <a
-                      href={`mailto:${profile.email}`}
-                      className="underline hover:opacity-70"
-                    >
-                      Or email me directly.
-                    </a>
-                  </p>
-                )}
-                {status === "idle" && (
-                  <p className="text-xs text-muted-foreground mt-3">
-                    Goes straight to my inbox — no email client needed.
-                  </p>
-                )}
+            <fieldset>
+              <legend className="mb-3 font-display text-[11px] font-semibold tracking-[0.05em] text-dim">
+                What are we building?
+              </legend>
+              <div className="flex flex-wrap gap-x-6 gap-y-2">
+                {projectTypes.map((t) => (
+                  <label key={t} className="flex cursor-pointer items-center gap-2">
+                    <input
+                      type="checkbox"
+                      checked={types.includes(t)}
+                      onChange={() => toggleType(t)}
+                      className="h-4 w-4 accent-[var(--blue)]"
+                    />
+                    <span className="text-[15px]">{t}</span>
+                  </label>
+                ))}
               </div>
-            </form>
-          </div>
+            </fieldset>
+
+            <div>
+              <label
+                htmlFor="message"
+                className="mb-2 block font-display text-[11px] font-semibold tracking-[0.05em] text-dim"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Scope, timeline, budget. Whatever you have."
+                rows={5}
+                className="w-full resize-none border border-hair bg-transparent p-4 placeholder:text-dim/60 focus:border-blue focus:outline-none"
+              />
+            </div>
+
+            {/* Honeypot — hidden from humans, catches spam bots */}
+            <input
+              type="text"
+              name="website"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="hidden"
+            />
+
+            <div>
+              <button
+                type="submit"
+                disabled={status === "sending"}
+                className="btn btn-primary disabled:opacity-50"
+              >
+                {status === "sending" ? "Sending" : "Send message"}
+              </button>
+
+              {status === "success" && (
+                <p className="mt-4 text-[15px]" role="status">
+                  <span className="text-blue">Sent.</span> I&apos;ll get back to
+                  you within 24 hours.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="mt-4 text-[15px] text-dim" role="alert">
+                  {error}{" "}
+                  <a
+                    href={`mailto:${profile.email}`}
+                    className="text-blue underline underline-offset-4"
+                  >
+                    Email me directly instead.
+                  </a>
+                </p>
+              )}
+              {status === "idle" && (
+                <p className="mt-4 text-[13.5px] text-dim">
+                  Goes straight to my inbox, no email client needed.
+                </p>
+              )}
+            </div>
+          </form>
         </div>
       </div>
     </main>

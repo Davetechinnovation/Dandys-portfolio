@@ -12,74 +12,67 @@ export function AboutPageClient({
   skills: Skills;
 }) {
   return (
-    <main className="md:ml-16">
-      {/* Hero Section */}
-      <section className="pt-20 md:pt-0 min-h-screen flex items-center justify-center">
-        <div className="max-w-4xl mx-auto px-8 md:px-16 py-20 md:py-0 w-full">
-          <p className="text-xs uppercase tracking-widest text-muted-foreground mb-8">
-            01 // THE ENGINEER
-          </p>
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
-            Building seamless<br />digital experiences<br />across platforms.
-          </h1>
-          <div className="flex flex-col sm:flex-row gap-10 items-start">
-            <div className="w-32 h-32 border border-border p-2 shrink-0 hidden sm:block">
-              <div className="w-full h-full relative overflow-hidden">
+    <main className="md:ml-14">
+      {/* Editorial hero: name + portrait */}
+      <section className="mx-auto flex min-h-[80dvh] max-w-[72rem] flex-col justify-center px-6 pb-16 pt-28 md:px-16 md:pt-20">
+        <p className="mb-5 font-display text-xs font-medium tracking-[0.06em] text-dim">
+          The engineer
+        </p>
+        <h1 className="text-[clamp(2.6rem,7vw,5.5rem)]">
+          Started at
+          <br />
+          sixteen. <span className="text-blue">Still at it.</span>
+        </h1>
+        <div className="mt-12 grid gap-10 md:grid-cols-[minmax(0,7fr)_minmax(0,4fr)] md:gap-16">
+          <div className="max-w-[60ch] space-y-4">
+            {profile.longBio.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </div>
+          <div className="self-start">
+            <figure className="rotate-[2deg] border border-ink bg-paper p-2.5 shadow-[5px_5px_0_var(--ink)] transition-transform duration-300 ease-signature hover:rotate-[0.5deg] w-[220px]">
+              <div className="aspect-[3/4] overflow-hidden">
                 <Image
                   src={profile.photo}
-                  alt="Udoka Dandave Chibuzor — software engineer"
-                  fill
-                  sizes="128px"
-                  className="object-cover"
+                  alt="Udoka Dandave Chibuzor"
+                  width={440}
+                  height={587}
+                  sizes="220px"
+                  className="h-full w-full object-cover [filter:grayscale(100%)_contrast(1.05)]"
                 />
               </div>
-            </div>
-            <div className="space-y-4 text-muted-foreground max-w-2xl">
-              {profile.longBio.map((paragraph, i) => (
-                <p key={i} className="text-base leading-relaxed">
-                  {paragraph}
-                </p>
-              ))}
-              <p className="text-xs uppercase tracking-widest pt-4">
-                {profile.location}
-              </p>
-            </div>
+              <figcaption className="pt-2 font-display text-[11px] text-dim">
+                Udoka Dandave Chibuzor
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-8 md:px-16">
-          <div className="mb-16">
-            <p className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
-              02 // SYSTEMS & SYNTAX
-            </p>
-            <h2 className="text-4xl md:text-5xl font-bold mb-2">The toolkit.</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {skills.map((skillGroup) => (
-              <div
-                key={skillGroup.category}
-                className="border border-border p-8 rounded-none hover:bg-card/30 transition-colors"
-              >
-                <h3 className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
-                  {skillGroup.category}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {skillGroup.items.map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-xs px-3 py-1 border border-border text-foreground/70 uppercase tracking-wider"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+      {/* Skills: plain editorial lists under a rule, no boxes */}
+      <section className="mx-auto max-w-[72rem] px-6 pb-24 md:px-16 md:pb-32">
+        <div className="mb-8 flex items-baseline justify-between border-b border-hair pb-4">
+          <h2 className="font-display text-[clamp(2rem,4.5vw,3.4rem)] font-extrabold leading-[1.05]">
+            The toolkit
+          </h2>
+        </div>
+        <div className="grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+          {skills.map((skillGroup) => (
+            <div key={skillGroup.category}>
+              <h3 className="font-display text-[15px] font-semibold">
+                {skillGroup.category
+                  .toLowerCase()
+                  .replace(/\b\w/g, (c: string) => c.toUpperCase())}
+              </h3>
+              <ul className="mt-3 space-y-1">
+                {skillGroup.items.map((tech) => (
+                  <li key={tech} className="text-[15.5px] text-dim">
+                    {tech}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </section>
     </main>

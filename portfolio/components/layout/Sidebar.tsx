@@ -3,14 +3,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Home, Briefcase, User, FileText, Mail } from "lucide-react";
+import { List, X } from "@phosphor-icons/react";
 
 const navItems = [
-  { icon: Home, label: "Home", href: "/" },
-  { icon: Briefcase, label: "Work", href: "/work" },
-  { icon: User, label: "About", href: "/about" },
-  { icon: FileText, label: "Resume", href: "/resume" },
-  { icon: Mail, label: "Contact", href: "/contact" },
+  { label: "Home", href: "/" },
+  { label: "Work", href: "/work" },
+  { label: "About", href: "/about" },
+  { label: "Resume", href: "/resume" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Sidebar() {
@@ -22,66 +22,65 @@ export function Sidebar() {
 
   return (
     <>
-      {/* Desktop Sidebar */}
-      <aside className="hidden md:flex flex-col fixed left-0 top-0 h-screen w-16 bg-background border-r border-border items-center justify-between py-8 px-3 z-50">
-        <div className="flex flex-col gap-8">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center justify-center w-10 h-10 hover:opacity-75 transition-opacity"
-            aria-label="Home"
-          >
-            <span className="text-2xl font-bold">D.</span>
-          </Link>
-
-          {/* Icons */}
-          <nav className="flex flex-col gap-6">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`transition-opacity ${
-                  isActive(item.href)
-                    ? "opacity-100"
-                    : "opacity-50 hover:opacity-100"
-                }`}
-                title={item.label}
-                aria-label={item.label}
-              >
-                <item.icon size={20} strokeWidth={1.5} />
-              </Link>
-            ))}
-          </nav>
-        </div>
+      {/* Desktop rail: vertical text nav */}
+      <aside className="fixed left-0 top-0 bottom-0 z-50 hidden md:flex w-14 flex-col items-center justify-between border-r border-hair bg-paper py-8">
+        <Link
+          href="/"
+          className="font-display text-xl font-extrabold"
+          aria-label="Home"
+        >
+          D.
+        </Link>
+        <nav aria-label="Main" className="flex flex-col gap-6">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              aria-current={isActive(item.href) ? "page" : undefined}
+              className={`font-display text-[10.5px] font-medium transition-colors [writing-mode:vertical-rl] ${
+                isActive(item.href)
+                  ? "text-blue"
+                  : "text-dim hover:text-blue"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+        <span aria-hidden className="font-display text-[10px] text-dim">
+          ©25
+        </span>
       </aside>
 
-      {/* Mobile Header */}
-      <header className="md:hidden fixed top-0 left-0 right-0 h-16 bg-background border-b border-border flex items-center justify-between px-4 z-50">
-        <Link href="/" className="text-xl font-bold">
+      {/* Mobile top bar */}
+      <header className="fixed top-0 left-0 right-0 z-50 flex h-14 items-center justify-between border-b border-hair bg-paper px-5 md:hidden">
+        <Link href="/" className="font-display text-lg font-extrabold">
           D.
         </Link>
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="p-2"
-          aria-label="Toggle menu"
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={22} weight="bold" /> : <List size={22} weight="bold" />}
         </button>
       </header>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       {isOpen && (
-        <nav className="md:hidden fixed top-16 left-0 right-0 bg-background border-b border-border z-50">
+        <nav className="fixed top-14 left-0 right-0 z-50 border-b border-hair bg-paper md:hidden">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`flex items-center gap-3 px-4 py-3 border-b border-border hover:bg-card transition-colors ${
-                isActive(item.href) ? "text-foreground" : "text-muted-foreground"
+              className={`block border-b border-hair px-5 py-3.5 font-display text-[15px] ${
+                isActive(item.href)
+                  ? "text-blue"
+                  : "text-dim active:text-ink"
               }`}
               onClick={() => setIsOpen(false)}
             >
-              <item.icon size={16} strokeWidth={1.5} />
               {item.label}
             </Link>
           ))}

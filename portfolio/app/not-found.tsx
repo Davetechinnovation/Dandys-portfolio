@@ -2,17 +2,16 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center md:ml-16">
-      <div className="text-center px-8">
-        <p className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
-          404 // ROUTE NOT FOUND
+    <div className="flex min-h-screen items-center justify-center px-6 md:ml-14">
+      <div className="max-w-md">
+        <h1 className="text-[clamp(2.6rem,7vw,4.5rem)]">
+          This page <span className="text-blue">shipped</span> somewhere else.
+        </h1>
+        <p className="mt-6 text-dim">
+          The route you followed does not exist. The rest of the site does.
         </p>
-        <h1 className="text-5xl font-bold mb-8">Lost in the system.</h1>
-        <Link
-          href="/"
-          className="px-8 py-3 bg-foreground text-background hover:opacity-90 transition-opacity font-semibold uppercase tracking-wider text-sm inline-block"
-        >
-          RETURN HOME
+        <Link href="/" className="btn btn-primary mt-8">
+          Back home
         </Link>
       </div>
     </div>
