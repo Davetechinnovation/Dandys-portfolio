@@ -89,6 +89,29 @@ export async function POST(request: Request) {
         message,
       ].join("\n"),
     });
+
+    // Auto-reply so the client knows the message landed.
+    // Sent after the inquiry succeeds — if this fails, the message is still safe.
+    transporter
+      .sendMail({
+        from: `"Udoka Dandave" <${user}>`,
+        to: email,
+        subject: "Got your message — Dandy",
+        text: [
+          `Hi ${name.split(" ")[0]},`,
+          "",
+          "Thanks for reaching out through my site — your message just landed in my inbox.",
+          "",
+          "I'll read it properly and get back to you within 24 hours, usually much sooner.",
+          "If it's urgent in the meantime, WhatsApp is the fastest way to reach me.",
+          "",
+          "— Dandy (Udoka Dandave)",
+          "Full stack software engineer",
+          "https://dandaveudoka.com.ng",
+        ].join("\n"),
+      })
+      .catch(() => {}); // never block or error the form because the auto-reply bounced
+
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(
