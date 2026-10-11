@@ -74,6 +74,10 @@ export async function POST(request: Request) {
     port: 587,
     secure: false,
     auth: { user, pass },
+    // Fail fast instead of hanging if Zoho is slow or unreachable
+    connectionTimeout: 10_000,
+    greetingTimeout: 10_000,
+    socketTimeout: 15_000,
   });
 
   try {
