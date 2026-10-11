@@ -25,7 +25,7 @@ export async function POST(request: Request) {
   if (isRateLimited(request.headers.get("x-forwarded-for") ?? "unknown")) {
     return NextResponse.json(
       { error: "Too many messages sent. Try again later." },
-      { status: 429 }
+      { status: 429 },
     );
   }
 
@@ -53,7 +53,7 @@ export async function POST(request: Request) {
   if (!name || !message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return NextResponse.json(
       { error: "Please fill in your name, a valid email, and a message." },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -61,8 +61,11 @@ export async function POST(request: Request) {
   const pass = process.env.ZOHO_PASS;
   if (!user || !pass || pass === "PASTE_YOUR_ZOHO_APP_PASSWORD_HERE") {
     return NextResponse.json(
-      { error: "The contact form is not configured yet. Please email me directly." },
-      { status: 500 }
+      {
+        error:
+          "The contact form is not configured yet. Please email me directly.",
+      },
+      { status: 500 },
     );
   }
 
@@ -92,13 +95,14 @@ export async function POST(request: Request) {
 
     // Auto-reply so the client knows the message landed.
     // Sent after the inquiry succeeds — if this fails, the message is still safe.
+    const first = name.split(" ")[0];
     transporter
       .sendMail({
         from: `"Udoka Dandave" <${user}>`,
         to: email,
         subject: "Got your message — Dandy",
         text: [
-          `Hi ${name.split(" ")[0]},`,
+          `Hi ${first},`,
           "",
           "Thanks for reaching out through my site — your message just landed in my inbox.",
           "",
@@ -109,14 +113,27 @@ export async function POST(request: Request) {
           "Full stack software engineer",
           "https://dandaveudoka.com.ng",
         ].join("\n"),
+        html: [
+          `<div style="font-family:Georgia,'Times New Roman',serif;max-width:560px;margin:0 auto;padding:32px 24px;color:#1a1815;line-height:1.6;">`,
+          `  <p style="margin:0 0 20px;font-size:16px;">Hi ${first},</p>`,
+          `  <p style="margin:0 0 20px;font-size:16px;">Thanks for reaching out through my site — your message just landed in my inbox.</p>`,
+          `  <p style="margin:0 0 28px;font-size:16px;">I&#39;ll read it properly and get back to you <strong>within 24 hours</strong>, usually much sooner. If it&#39;s urgent in the meantime, WhatsApp is the fastest way to reach me.</p>`,
+          `  <p style="margin:0 0 4px;font-size:15px;">— Dandy (Udoka Dandave)</p>`,
+          `  <p style="margin:0 0 20px;font-size:13px;color:#6b675f;">Full stack software engineer</p>`,
+          `  <p style="margin:0;font-size:14px;"><a href="https://dandaveudoka.com.ng" style="color:#1d39c4;">dandaveudoka.com.ng</a></p>`,
+          `</div>`,
+        ].join("\n"),
       })
       .catch(() => {}); // never block or error the form because the auto-reply bounced
 
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(
-      { error: "Couldn't send your message right now. Please try again shortly." },
-      { status: 500 }
+      {
+        error:
+          "Couldn't send your message right now. Please try again shortly.",
+      },
+      { status: 500 },
     );
   }
 }
