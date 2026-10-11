@@ -94,10 +94,12 @@ export async function POST(request: Request) {
     });
 
     // Auto-reply so the client knows the message landed.
-    // Sent after the inquiry succeeds — if this fails, the message is still safe.
+    // Awaited — on serverless (Vercel) an unawaited send is killed when the
+    // response returns, which silently dropped these replies. If it still
+    // fails, the inquiry is safe; we just log it.
     const first = name.split(" ")[0];
-    transporter
-      .sendMail({
+    try {
+      await transporter.sendMail({
         from: `"Udoka Dandave" <${user}>`,
         to: email,
         subject: "Got your message — Dandy",
@@ -123,8 +125,10 @@ export async function POST(request: Request) {
           `  <p style="margin:0;font-size:14px;"><a href="https://dandaveudoka.com.ng" style="color:#1d39c4;">dandaveudoka.com.ng</a></p>`,
           `</div>`,
         ].join("\n"),
-      })
-      .catch(() => {}); // never block or error the form because the auto-reply bounced
+      });
+    } catch (err) {
+      console.error("auto-reply failed:", err);
+    }
 
     return NextResponse.json({ ok: true });
   } catch {
